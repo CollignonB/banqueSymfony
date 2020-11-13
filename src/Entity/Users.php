@@ -59,6 +59,11 @@ class Users
      */
     private $accounts;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $birth_date;
+
     public function __construct()
     {
         $this->accounts = new ArrayCollection();
@@ -179,6 +184,18 @@ class Users
                 $account->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birth_date;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birth_date): self
+    {
+        $this->birth_date = $birth_date;
 
         return $this;
     }
