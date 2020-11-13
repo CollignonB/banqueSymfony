@@ -33,6 +33,11 @@ class Transferts
      */
     private $Accounts;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_transfert;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +75,18 @@ class Transferts
     public function setAccounts(?Accounts $Accounts): self
     {
         $this->Accounts = $Accounts;
+
+        return $this;
+    }
+
+    public function getDateTransfert(): ?\DateTimeInterface
+    {
+        return $this->date_transfert;
+    }
+
+    public function setDateTransfert(\DateTimeInterface $date_transfert): self
+    {
+        $this->date_transfert = $date_transfert;
 
         return $this;
     }
