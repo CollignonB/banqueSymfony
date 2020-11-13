@@ -1,0 +1,197 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+	{% block nav %}
+		<nav class="navbar navbar-expand-lg navbar-light shadow border-secondary border-bottom col-md-9 ml-sm-auto col-lg-10 bg-white">
+			<a class="navbar-brand text-black" href="{{ path ("app_home") }}">ADALOVELACE</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="btn btn-light">MENU</span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarHeaderToggler">
+				<ul class="nav align-items-center mx-5">
+					<li class="nav-item active">
+						<a class="nav-link text-dark" href="{{ path ("app_home") }}">Accueil<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="#">Actualités</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="#" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+					</li>
+					<li>
+						<input class="rounded" type="search" placeholder="recherche">
+					</li>
+				</ul>
+			</div>
+
+		</nav>
+	{% endblock %}
+
+	{% block header %}{% endblock %}
+
+
+	{% block main %}
+
+		<nav class="sidebar text-black col-sm col-lg-2 border-right border-secondary bg-white p-0">
+
+			<ul class="card-body">
+				<li>
+					{# {% if app.user %} #}
+					<div class="text-black mb-3 mx-0">
+						<h5 class="">{#{{ app.user.username }}#}Nom de l'Utilisateur</h5>
+					</div>
+					{# {% endif %} #}
+				</li>
+				<li class="mt-4">
+					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
+						Tableau de Bord</a>
+				</li>
+
+				<li class="mt-4">
+					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/bankIco.png') }}" alt="">Mes Comptes</a>
+					<ul>
+						<li><a class="text-dark" href="">Compte Courant</a></li>
+						<li><a class="text-dark" href="">Livret A</a></li>
+						<li><a class="text-dark" href="">PEL</a></li>
+						<li><a class="text-success font-weight-bold" href="">Ajouter un compte</a></li>
+					</ul>
+				</li>
+
+				<li class="mt-4">
+					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</a>
+					<ul>
+						<li><a class="text-dark" href="">Mon indentité</a></li>
+						<li><a class="text-dark" href="">RIB</a></li>
+						<li><a class="text-dark" href="">BIC</a></li>
+					</ul>
+				</li>
+
+				<li class="mt-4">
+					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/secuIco.png') }}" alt="">Mes Assurances</a>
+					<ul>
+						<li><a class="text-dark" href="">Santé</a></li>
+						<li><a class="text-dark" href="">Immobilier</a></li>
+						<li><a class="text-dark" href="">Automobile</a></li>
+					</ul>
+				</li>
+
+				<li class="mt-4">
+					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/contactIco.png') }}" alt="">Contact en Agence</a>
+					<ul>
+						<li><a class="text-dark" href="">Mon conseiller</a></li>
+					</ul>
+				</li>
+				<li class="text-center mt-5">
+					<a class="text-center text-danger border-top border-white bg-dark" href="{#{{ path ('app_logout') }}#}">
+						<h5 class="btn btn-danger text-white font-weight-bold">Deconnexion</h5>
+					</a>
+				</li>
+			</ul>
+
+		</nav>
+		<main class="col-md-9 ml-sm-auto col-lg-12 px-md-4 mt-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm col-lg-6">
+						<div class="card text-black shadow my-5 bg-white rounded">
+							<div class="card-header text-center">
+								<h5>Compte Courant</h5>
+							</div>
+							<div class="d-flex">
+								<div class="card-body text-center">
+									<h5 class="card-title text-white rounded bg-info p-2">75418<span class="text-warning">€</span>
+									</h5>
+								</div>
+								<div class="card-body text-center">
+									<div class="card-body py-0">
+										<h5 class="card-title">Operations</h5>
+									</div>
+									<hr>
+									<div class="d-flex align-items-center justify-content-center p-0">
+										<p class="card-text col-10">Some quick example text to build on the card title.</p>
+										<p class="card-title font-weight-bold">- 418€</p>
+									</div>
+									<hr>
+									<div class="d-flex align-items-center justify-content-center p-0">
+										<p class="card-text col-10">Some quick example text to build on the card title.</p>
+										<p class="card-title font-weight-bold">+ 611€</p>
+									</div>
+									<hr>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm col-lg-6">
+						<div class="card text-black shadow my-5 bg-white rounded">
+							<div class="card-header text-center">
+								<h5>Livret - A</h5>
+							</div>
+							<div class="d-flex">
+								<div class="card-body text-center">
+									<h5 class="card-title text-white rounded bg-info p-2">5241<span class="text-warning">€</span>
+									</h5>
+								</div>
+								<div class="card-body text-center">
+									<div class="card-body py-0">
+										<h5 class="card-title">Operations</h5>
+									</div>
+									<hr>
+									<div class="d-flex align-items-center justify-content-center p-0">
+										<p class="card-text col-10">Some quick example text to build on the card title.</p>
+										<p class="card-title font-weight-bold">+ 697€</p>
+									</div>
+									<hr>
+									<div class="d-flex align-items-center justify-content-center p-0">
+										<p class="card-text col-10">Some quick example text to build on the card title.</p>
+										<p class="card-title font-weight-bold">+ 3200€</p>
+									</div>
+									<hr>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm col-lg-6">
+						<div class="card text-black shadow my-5 bg-white rounded">
+							<div class="card-header text-center">
+								<h5>P E L</h5>
+							</div>
+							<div class="d-flex">
+								<div class="card-body text-center">
+									<h5 class="card-title text-white rounded bg-info p-2">10818<span class="text-warning">€</span>
+									</h5>
+								</div>
+								<div class="card-body text-center">
+									<div class="card-body py-0">
+										<h5 class="card-title">Operations</h5>
+									</div>
+									<hr>
+									<div class="d-flex align-items-center justify-content-center p-0">
+										<p class="card-text col-10">Some quick example text to build on the card title.</p>
+										<p class="card-title font-weight-bold">+ 212€</p>
+									</div>
+									<hr>
+									<div class="d-flex align-items-center justify-content-center p-0">
+										<p class="card-text col-10">Some quick example text to build on the card title.</p>
+										<p class="card-title font-weight-bold">+ 212€</p>
+									</div>
+									<hr>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+{% endblock %}
