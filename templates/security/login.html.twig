@@ -54,29 +54,28 @@
 
 					<section class="card col-sm-12 container mb-4 p-0">
 						<article class="text-center">
-							<h2 class="card-header text-white bg-info">Accéder à mes comptes</h2>
-							{# {% if error %}
-								<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-							{% endif %} #}
+							<h2 class="card-header text-white bg-info">Accéder à mon Espace</h2>
 							<form method="POST">
 
 								{# {% if app.user %}
-									<div class="mb-3">
-										{{ app.user.username }},
-										<a href="{{ path ('app_logout') }}">Deconnexion</a>
-									</div>
-								{% endif %} #}
+																	<div class="mb-3">
+																		{{ app.user.username }},
+																		<a href="{{ path ('app_logout') }}">Deconnexion</a>
+																	</div>
+																{% endif %} #}
 
 								<!--Content-->
-								<div
-									class="text-dark py-5 px-5">
-									<!--Body-->
+									<div
+									class="text-dark py-5 px-5"> <!--Body-->
 									<div
 										class="text-center text-dark px-5">
 										<!--Body-->
 										<div class="md-form mb-5">
 											<label class="text-dark" data-error="wrong" data-success="right" for="Form-email5">Votre E-mail</label>
-											<input type="email" value="{#{{ last_username }}#}" name="email" id="inputEmail" class="form-control" required autofocus>
+											<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+											{% if error %}
+												<div class="alert alert-danger mt-4">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+											{% endif %}
 										</div>
 
 										<div class="md-form pb-3">
@@ -130,15 +129,15 @@
 								type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 							{#
-																									 Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																									See https://symfony.com/doc/current/security/remember_me.html
-																							
-																									<div class="checkbox mb-3">
-																										<label>
-																											<input type="checkbox" name="_remember_me"> Remember me
-																										</label>
-																									</div>
-																								#}
+																																 Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+																																See https://symfony.com/doc/current/security/remember_me.html
+																														
+																																<div class="checkbox mb-3">
+																																	<label>
+																																		<input type="checkbox" name="_remember_me"> Remember me
+																																	</label>
+																																</div>
+																															#}
 							</form>
 
 						</article>
