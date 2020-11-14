@@ -45,7 +45,7 @@
 				<li>
 					{# {% if app.user %} #}
 					<div class="text-black mb-3 mx-0">
-						<h5 class="">{#{{ app.user.username }}#}Nom de l'Utilisateur</h5>
+						<h5 class="text-info font-weight-bold">{{ app.user.firstname }} {{ app.user.lastname }}</h5>
 					</div>
 					{# {% endif %} #}
 				</li>
@@ -89,7 +89,7 @@
 					</ul>
 				</li>
 				<li class="text-center mt-5">
-					<a class="text-center text-danger border-top border-white bg-dark" href="{#{{ path ('app_logout') }}#}">
+					<a class="text-center text-danger border-top border-white bg-dark" href="{{ path ('app_logout') }}">
 						<h5 class="btn btn-danger text-white font-weight-bold">Deconnexion</h5>
 					</a>
 				</li>
