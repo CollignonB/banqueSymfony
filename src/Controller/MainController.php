@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class MainController extends AbstractController
 {
@@ -16,16 +17,8 @@ class MainController extends AbstractController
         return $this->render('home/home.html.twig');
     }
 
-    // ATTENTION ! route fictive en attendant la réaction du login 
     /**
-     * @Route("/login", name="app_login")
-     */
-    public function login(): Response
-    {
-        return $this->render('home/login.html.twig');
-    }
-
-    /**
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @Route("/user", name="app_user")
      */
     public function user(): Response
