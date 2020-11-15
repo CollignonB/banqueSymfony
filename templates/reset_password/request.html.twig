@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	Connexion
+{% block title %}Mot de passe oublié
 {% endblock %}
 
 {% block nav %}
@@ -27,7 +26,7 @@
 					<a class="nav-link text-dark" href="#" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 				</li>
 			</ul>
-			<a href="{{ path ("app_login") }}" class="btn btn-sm btn-info text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
+			<a href="{{ path ("app_login") }}" class="btn btn-sm btn-warning text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
 		</div>
 		{# collapse Menu END#}
 
@@ -36,35 +35,37 @@
 {% endblock %}
 
 {% block main %}
+
 	<main>
 		<div class="container-fluid m-auto">
-			<div class="row m-2">
+			<div
+				class="row m-2">
 				{#  Carousel  #}
-				<article id="carousel" class="card col-sm col-lg shadow mr-2 mb-4 p-0" style="height: 100%">
+				<article id="carousel" class="card col-sm col-lg mr-2 mb-4 p-0 shadow" style="height: 100%">
 					<div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<img src="https://cdn.dribbble.com/users/1322388/screenshots/6480681/online-banking1.jpg" class="d-block w-100" alt="...">
 								<div class="card carousel-caption d-none text-dark d-md-block pt-0">
-									<h5 class="card-header text-white bg-info shadow">Ici un titre</h5>
+									<h5 class="card-header text-white bg-warning shadow">Ici un titre</h5>
 									<p class="my-4">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-									<button class="btn bg-info text-white shadow">voir</button>
+									<button class="btn bg-warning text-white shadow">voir</button>
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img src="https://cdn.dribbble.com/users/1322388/screenshots/9732802/media/f6522ed90c43fa8952a6cfcf42745462.jpg" class="d-block w-100" alt="...">
 								<div class="card carousel-caption d-none text-dark d-md-block pt-0">
-									<h5 class="card-header text-white bg-info shadow">Test numero 2</h5>
+									<h5 class="card-header text-white bg-warning shadow">Test numero 2</h5>
 									<p class="my-4">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-									<button class="btn bg-info text-white shadow">voir</button>
+									<button class="btn bg-warning text-white shadow">voir</button>
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img src="https://cdn.dribbble.com/users/1322388/screenshots/6162733/shopping-2.jpg" class="d-block w-100" alt="...">
 								<div class="card carousel-caption d-none text-dark d-md-block pt-0">
-									<h5 class="card-header text-white bg-info shadow">Plus d'idée</h5>
+									<h5 class="card-header text-white bg-warning shadow">Plus d'idée</h5>
 									<p class="my-4">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-									<button class="btn bg-info text-white shadow">voir</button>
+									<button class="btn bg-warning text-white shadow">voir</button>
 								</div>
 							</div>
 						</div>
@@ -80,52 +81,40 @@
 				</article>
 				{#  Carousel END #}
 
-				{# Login #}
-				<div class="container card shadow col-sm col-lg mb-4 p-0">
-					<article class="text-center">
-						<h2 class="card-header shadow text-white bg-info">Accéder à mon Espace</h2>
+				{# Recover password #}
+				<section class="container col-sm col-lg p-0">
+					<section class="card col-sm-12 container shadow mb-4 p-0">
+						<article class="text-center">
+							<h2 class="card-header shadow text-white bg-warning">Mot de passe oublié</h2>
+							{# Form recover password #}
+							<div class="my-5">
 
-						{# Form login #}
-						<form method="POST">
-							<div class="col-sm col-lg-6 text-center text-dark py-5 px-5 m-auto">
-								<div class="md-form mb-5">
-									<label class="text-dark" data-error="wrong" data-success="right" for="Form-email5">Votre E-mail</label>
-									<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-									{% if error %}
-										<div class="alert alert-danger mt-4">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-									{% endif %}
+								{% for flashes in app.flashes('Erreur lors de la réinitialisation du mot de passe') %}
+									<div class="alert alert-danger" role="alert">{{ flashes }}</div>
+								{% endfor %}
+
+								<div class="d-flex justify-content-center">
+									{{ form_start(requestForm) }}
+									{{ form_row(requestForm.email) }}
 								</div>
-								<div class="md-form pb-3">
-									<label class="text-dark" data-error="wrong" data-success="right" for="Form-pass5">Votre Mot De Passe</label>
-									<input type="password" name="password" id="inputPassword" class="form-control" required>
-									<div class="form-group text-center mt-4">
-										<input class="form-check-input" type="checkbox" id="checkbox624">
-										<label for="checkbox624" class="text-dark form-check-label">Accepter les<a href="#" class="text-dark font-weight-bold">
-												Termes et Conditions</a>
-										</label>
-									</div>
+
+								<div class="my-4">
+									<p>
+										Recevoir un lien de réinitialisation.
+									</p>
 								</div>
-								<div class="row d-flex align-items-center mb-4">
-									<div class="text-center mb-3 col-md-12">
-										<button class="btn btn-info btn-md btn-rounded shadow" type="submit">Connexion</button>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12 text-center">
-										<a href="{{ path ('app_forgot_password_request')}}">
-											<p class="font-small text-dark ">Mot de passe oublié?
-											</p>
-										</a>
-									</div>
-								</div>
+
+								<button class="btn btn-warning text-white shadow my-4">valider</button>
+								{{ form_end(requestForm) }}
+								
 							</div>
-							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-						</form>
-						{# Form login END #}
-					</article>
-				</div>
-				{# Login END #}
+							{# Form recover password END #}
+						</article>
+					</section>
+				</section>
+				{# Recover password END #}
 			</div>
+
 		</div>
 	</main>
 {% endblock %}

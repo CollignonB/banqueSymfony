@@ -1,0 +1,10 @@
+<h1>Bonjour,</h1><br><br>
+
+<p>Nous avons reçu une réinitialisation de mot de passe de votre part.</p>
+<p>Pour changer de mot de passe, cliquez sur le lien : </p><br><br>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+<br><br>
+<p>Le lien expirera dans {{ tokenLifetime|date('g') }} heures.</p>
+
+<p>AdaLovelace - Bank</p>
