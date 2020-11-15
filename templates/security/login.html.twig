@@ -21,10 +21,13 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-dark" href="#">Actualités</a>
+					<a class="nav-link text-dark" href="{{ path ("app_news_letters") }}">Actualités</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
 				</li>
 			</ul>
 			<a href="{{ path ("app_login") }}" class="btn btn-sm btn-info text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
@@ -38,7 +41,8 @@
 {% block main %}
 	<main>
 		<div class="container-fluid m-auto">
-			<div class="row m-2">
+			<div
+				class="row m-2">
 				{#  Carousel  #}
 				<article id="carousel" class="card col-sm col-lg shadow mr-2 mb-4 p-0" style="height: 100%">
 					<div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">

@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AdaLovelace - teams
+{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/teams.css') }}">
+{% endblock %}
+
+{# Navbar Block #}
+{% block nav %}
+
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light shadow bg-white">
+		<a class="navbar-brand text-dark" href="{{ path ("app_home") }}">ADALOVELACE</a>
+
+		{# collapse navbar #}
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="btn btn-light">MENU</span>
+		</button>
+		{# collapse navbar END #}
+
+		<div class="collapse navbar-collapse justify-content-end" id="navbarHeaderToggler">
+
+			{# ul navbar #}
+			<ul class="nav mx-5">
+				<li class="nav-item active">
+					<a class="nav-link text-dark" href="{{ path ("app_home") }}">Accueil<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="{{ path ("app_news_letters") }}">Actualités</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
+				</li>
+			</ul>
+			{# ul navbar END #}
+
+
+			{# Login Logout condition #}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<a href="{{path('app_user')}}" class="btn btn-sm text-white btn-success shadow m-2 my-sm-0">Mon Espace</a>
+				<a href="{{path('app_logout')}}" class="btn btn-sm btn-danger shadow m-2 my-sm-0">Deconnexion</a>
+			{% else %}
+				<a href="{{ path ("app_login") }}" class="btn btn-sm btn-primary text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
+			{% endif %}
+			{# Login Logout condition END #}
+
+		</div>
+	</nav>
+
+{% endblock %}
+{# Navbar Block END#}
+
+{% block main %}
+
+	<!-- Team -->
+	<section id="team" class="pb-5">
+		<div class="container">
+			<h4 class="card section-title text-white shadow bg-success py-4">Contact</h4>
+			<div
+				class="row">
+				<!-- Team member -->
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="image-flip">
+						<div class="mainflip flip-0">
+							<div class="frontside">
+								<div class="card shadow">
+									<div class="card-body text-center">
+										<p><img class="img-fluid " src="https://avatars0.githubusercontent.com/u/67335568?s=400&u=ac5f6481217fb26a07edabe5856986caafbd5e19&v=4" alt="card image"></p>
+										<h4 class="card-title text-danger">Baptiste.C</h4>
+										<p class="card-text">Lead-Dev-Junior.</p>
+										<a href="#" class="btn btn-danger btn-sm shadow">
+											<i class="fa fa-eye"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="backside">
+								<div class="card shadow">
+									<div class="card-body text-center mt-4" style="width: 540px;">
+										<h4 class="card-title text-danger">Baptiste.C</h4>
+										<p class="card-text">Jeune Lead Dev, spécialisé back-end.<br><br>
+											<span class="font-weight-light font-italic">"Du côté obscur de la force"</span>
+										</p>
+										<ul class="list-inline">
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-danger text-danger" target="_blank" href="#">
+													<i class="fa fa-facebook"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-danger" target="_blank" href="#">
+													<i class="fa fa-twitter"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-danger" target="_blank" href="#">
+													<i class="fa fa-skype"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-danger" target="_blank" href="#">
+													<i class="fa fa-google"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ./Team member -->
+				<!-- Team member -->
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+							<div class="frontside">
+								<div class="card shadow">
+									<div class="card-body text-center">
+										<p><img class=" img-fluid" src="http://pngwebicons.com/uploads/anime/ico/anime_icon6679.ico" alt="card image"></p>
+										<h4 class="card-title text-success">Duchaîne.KDD</h4>
+										<p class="card-text">Dev Junior.</p>
+										<a href="#" class="btn btn-success btn-sm shadow">
+											<i class="fa fa-eye"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="backside">
+								<div class="card">
+									<div class="card-body text-center mt-4" style="width: 540px;">
+										<h4 class="card-title text-success">Duchaîne.KDD</h4>
+										<p class="card-text">Dev Junior en formation.<br><br>
+											<span class="font-weight-light font-italic">"Du côté lumineux de la force"</span>
+										</p>
+										<ul class="list-inline">
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-success" target="_blank" href="#">
+													<i class="fa fa-facebook"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-success" target="_blank" href="#">
+													<i class="fa fa-twitter"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-success" target="_blank" href="#">
+													<i class="fa fa-skype"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a class="social-icon text-xs-center text-success" target="_blank" href="#">
+													<i class="fa fa-google"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ./Team member -->
+			</div>
+		</div>
+	</section>
+	<!-- Team -->
+
+{% endblock %}

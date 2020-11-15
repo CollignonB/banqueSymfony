@@ -18,8 +18,7 @@
 		</button>
 		{# collapse navbar END #}
 
-		<div
-			class="collapse navbar-collapse justify-content-end" id="navbarHeaderToggler">
+		<div class="collapse navbar-collapse justify-content-end" id="navbarHeaderToggler">
 
 			{# ul navbar #}
 			<ul class="nav mx-5">
@@ -28,10 +27,13 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-dark" href="#">Actualités</a>
+					<a class="nav-link text-dark" href="{{ path ("app_news_letters") }}">Actualités</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
 				</li>
 			</ul>
 			{# ul navbar END #}

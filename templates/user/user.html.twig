@@ -25,6 +25,9 @@
 					<li class="nav-item">
 						<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
+					</li>
 					<li>
 						<input class="rounded" type="search" placeholder="recherche">
 					</li>
@@ -45,36 +48,37 @@
 				<li>
 					{# {% if app.user %} #}
 					<div class="text-black mb-3 mx-0">
-						<h5 class="text-info font-weight-bold">{{ app.user.firstname }} {{ app.user.lastname }}</h5>
+						<h5 class="text-info font-weight-bold">{{ app.user.firstname }}
+							{{ app.user.lastname }}</h5>
 					</div>
 					{# {% endif %} #}
 				</li>
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
-						Tableau de Bord</a>
+					<a class="text-dark font-weight-bold" href="{{ path ("app_user") }}"><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
+						Mon Espace</a>
 				</li>
 
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/bankIco.png') }}" alt="">Mes Comptes</a>
+					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bankIco.png') }}" alt="">Mes Comptes</p>
 					<ul>
-						<li><a class="text-dark" href="">Compte Courant</a></li>
-						<li><a class="text-dark" href="">Livret A</a></li>
-						<li><a class="text-dark" href="">PEL</a></li>
-						<li><a class="text-success font-weight-bold" href="">Ajouter un compte</a></li>
+						<li><a class="text-dark"href="{{ path ('app_single') }}">Compte Courant</a></li>
+						<li><a class="text-dark"href="{{ path ('app_single') }}">Livret A</a></li>
+						<li><a class="text-dark"href="{{ path ('app_single') }}">PEL</a></li>
+						<li><a class="text-success font-weight-bold"href="{{ path ('app_new_account') }}">Ajouter un compte</a></li>
 					</ul>
 				</li>
 
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</a>
+					<p class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</p>
 					<ul>
-						<li><a class="text-dark" href="">Mon indentité</a></li>
+						<li><a class="text-dark"href="{{ path ('app_identity')}}">Mon indentité</a></li>
 						<li><a class="text-dark" href="">RIB</a></li>
 						<li><a class="text-dark" href="">BIC</a></li>
 					</ul>
 				</li>
 
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/secuIco.png') }}" alt="">Mes Assurances</a>
+					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/secuIco.png') }}" alt="">Mes Assurances</p>
 					<ul>
 						<li><a class="text-dark" href="">Santé</a></li>
 						<li><a class="text-dark" href="">Immobilier</a></li>
@@ -83,7 +87,7 @@
 				</li>
 
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/contactIco.png') }}" alt="">Contact en Agence</a>
+					<p class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/contactIco.png') }}" alt="">Contact en Agence</p>
 					<ul>
 						<li><a class="text-dark" href="">Mon conseiller</a></li>
 					</ul>
