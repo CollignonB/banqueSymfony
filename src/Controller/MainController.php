@@ -18,6 +18,14 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/teams", name="app_teams")
+     */
+    public function teams(): Response
+    {
+        return $this->render('fake_pages/teams.html.twig');
+    }
+
+    /**
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @Route("/user", name="app_user")
      */

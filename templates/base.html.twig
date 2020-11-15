@@ -47,7 +47,7 @@
 									<a class="nav-link text-dark" href="#">Actualités</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link text-dark" href="#" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+									<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 								</li>
 							</ul>
 							{# ul navbar END #}
@@ -55,7 +55,7 @@
 
 							{# Login Logout condition #}
 							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<a href="{{path('app_user')}}" class="btn btn-sm btn-success shadow m-2 my-sm-0">Mon Espace</a>
+								<a href="{{path('app_user')}}" class="btn btn-sm text-white bg-cyan shadow m-2 my-sm-0">Mon Espace</a>
 								<a href="{{path('app_logout')}}" class="btn btn-sm btn-danger shadow m-2 my-sm-0">Deconnexion</a>
 							{% else %}
 								<a href="{{ path ("app_login") }}" class="btn btn-sm bg-cyan text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
