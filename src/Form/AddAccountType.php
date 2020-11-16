@@ -19,11 +19,6 @@ class AddAccountType extends AbstractType
         $builder
             ->add('AccountType',EntityType::class, [
                 'class' => AccountTypes::class,
-                'query_builder' => function (EntityRepository $er) 
-                {
-                    return $er->createQueryBuilder('at')
-                        ->orderBy('at.name', 'ASC');
-                },
                 'choice_label' => 'name'
             ])
             ->add('amount')

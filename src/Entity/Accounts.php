@@ -6,6 +6,7 @@ use App\Repository\AccountsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AccountsRepository::class)
@@ -21,7 +22,12 @@ class Accounts
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\GreaterThanOrEqual(
+     *  value = 50,
+     *  message = "Le premier versement doit être au moins de 50€"
+     * )
      */
+
     private $amount;
 
     /**
@@ -37,6 +43,7 @@ class Accounts
 
     /**
      * @ORM\ManyToOne(targetEntity=AccountTypes::class, inversedBy="accounts")
+     * @Assert\NotBlank
      */
     private $AccountType;
 
