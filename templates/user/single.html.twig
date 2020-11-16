@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{% endblock %}
+
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 {% endblock %}
 
@@ -108,17 +110,25 @@
 
 			<div class="container">
 				<h1 class="text-dark">SINGLE</h1>
+				<h6>Ajouter un bouton suppression ajouter bouton transfert</h6>
+				<h6>Ajouter
+				</h6>
 				<div class="row">
 					<div class="col-sm col-lg-6">
 						<div class="card text-black shadow my-5 bg-white rounded">
 							<div class="card-header text-center">
-								<h5>Compte Courant</h5>
+								<h5>
+									{# {% for accounts in account %}
+																												{{ account.type }}
+																											{% endfor %} #}
+								</h5>
 							</div>
 							<div class="d-flex">
 								<div class="card-body text-center">
 									<h5 class="card-title text-white rounded bg-info p-2">75418<span class="text-warning">€</span>
 									</h5>
 								</div>
+								{# operation #}
 								<div class="card-body text-center">
 									<div class="card-body py-0">
 										<h5 class="card-title">Operations</h5>
@@ -135,7 +145,14 @@
 									</div>
 									<hr>
 								</div>
+								{# ./operation #}
 							</div>
+							{# delete transfer #}
+							<div class="card-footer text-center">
+								<button class="btn btn-danger">Supprimer le compte</button>
+								<button class=" btn text-white btn-warning">Faire un transfert</button>
+							</div>
+
 						</div>
 					</div>
 				</div>

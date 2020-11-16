@@ -24,6 +24,11 @@ class AccountTypes
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Accounts::class, mappedBy="AccountType")
+     */
+    private $accounts;
+
     public function __construct()
     {
         $this->accounts = new ArrayCollection();

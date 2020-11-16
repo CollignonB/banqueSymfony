@@ -4,8 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use App\Entity\Accounts;
+use App\Form\AddAccountType;
+
+
 
 class UsersController extends AbstractController
 {
@@ -29,9 +34,29 @@ class UsersController extends AbstractController
     /**
      * @Route("/user/new_account", name="app_new_account")
      */
-    public function new_account(): Response
+    public function new_account(Request $request): Response
     {
-        return $this->render('user/new_account.html.twig');
+        $account = new Accounts();
+        $form = $this->createForm(AddAccountType::class);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $account = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $account->setUser($this->getUser());
+            $account->setOpeningDate(new \DateTime());
+            $entityManager->persist($account);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute("app_user");
+        }
+
+        return $this->render('user/new_account.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
