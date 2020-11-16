@@ -26,7 +26,7 @@
 				{% block nav %}
 
 					<nav class="navbar fixed-top navbar-expand-lg navbar-light shadow bg-white">
-						<a class="navbar-brand text-dark" href="{{ path ("app_home") }}">ADALOVELACE</a>
+						<a class="navbar-brand text-dark" href="{{ path ("app_accueil") }}">ADALOVELACE</a>
 
 						{# collapse navbar #}
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,14 +40,14 @@
 							{# ul navbar #}
 							<ul class="nav mx-5">
 								<li class="nav-item active">
-									<a class="nav-link text-dark" href="{{ path ("app_home") }}">Accueil<span class="sr-only">(current)</span>
+									<a class="nav-link text-dark" href="{{ path ("app_accueil") }}">Accueil<span class="sr-only">(current)</span>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link text-dark" href="{{ path ("app_news_letters") }}">Actualités</a>
+									<a class="nav-link text-dark" href="{{ path ("app_actualite") }}">Actualités</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos équipes</a>
+									<a class="nav-link text-dark" href="{{ path ("app_equipe") }}" tabindex="-1" aria-disabled="true">Nos équipes</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
@@ -58,10 +58,10 @@
 
 							{# Login Logout condition #}
 							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<a href="{{path('app_user')}}" class="btn btn-sm text-white bg-cyan shadow m-2 my-sm-0">Mon Espace</a>
+								<a href="{{path('particulier_mon-espace')}}" class="btn btn-sm text-white bg-cyan shadow m-2 my-sm-0">Mon Espace</a>
 								<a href="{{path('app_logout')}}" class="btn btn-sm btn-danger shadow m-2 my-sm-0">Deconnexion</a>
 							{% else %}
-								<a href="{{ path ("app_login") }}" class="btn btn-sm bg-cyan text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
+								<a href="{{ path ("app_me-connecter") }}" class="btn btn-sm bg-cyan text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
 							{% endif %}
 							{# Login Logout condition END #}
 

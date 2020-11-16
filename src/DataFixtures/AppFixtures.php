@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
         $firstName = ['Baptiste' ,'Duchaîne', 'Thomas'];
         $email = ['cb@bank.com' ,'kd@bank.com', 'gt@bank.com'];
         $city = ['Rouen' ,'Vernon', 'Louvier'];
-        $cityCode = ['Collignon' ,'Kouassi Dit Darboux', 'Gossart'];
+        $cityCode = ['76000' ,'27200', '27500'];
         $adress = ['Rue obscur' ,'Rue ténébreuse', 'Rue final'];
 
         for ($d = 0; $d < 3; $d++) {

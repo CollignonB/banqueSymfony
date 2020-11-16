@@ -1,74 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mot de passe oublié
+{% block title %}Nouveau mot de passe
 {% endblock %}
 
 {% block nav %}
 	{# Nav Block #}
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light shadow bg-white">
-
-		<a class="navbar-brand text-dark" href="{{ path ("app_home") }}">ADALOVELACE</a>
-
-		{# collapse Menu #}
+		<a class="navbar-brand text-dark" href="{{ path ("app_accueil") }}">ADALOVELACE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="btn btn-light">MENU</span>
 		</button>
+
 		<div class="collapse navbar-collapse justify-content-end" id="navbarHeaderToggler">
 			<ul class="nav mx-5">
 				<li class="nav-item active">
-					<a class="nav-link text-dark" href="{{ path ("app_home") }}">Accueil<span class="sr-only">(current)</span>
+					<a class="nav-link text-dark" href="{{ path ("app_accueil") }}">Accueil<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-dark" href="{{ path ("app_news_letters") }}">Actualités</a>
+					<a class="nav-link text-dark" href="{{ path ("app_actualite") }}">Actualités</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+					<a class="nav-link text-dark" href="{{ path ("app_equipe") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
 				</li>
 			</ul>
-			<a href="{{ path ("app_login") }}" class="btn btn-sm btn-warning text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
-		</div>
-		{# collapse Menu END#}
 
+			<a href="{{ path ("app_me-connecter") }}" class="btn btn-sm btn-success shadow m-2 my-sm-0" type="button">Mon Espace</a>
+
+		</div>
 	</nav>
 	{# Nav Block END#}
 {% endblock %}
 
 {% block main %}
-
 	<main>
 		<div class="container-fluid m-auto">
 			<div
 				class="row m-2">
 				{#  Carousel  #}
-				<article id="carousel" class="card col-sm col-lg mr-2 mb-4 p-0 shadow" style="height: 100%">
+				<article id="carousel" class="card col-sm col-lg shadow mr-2 mb-4 p-0" style="height: 100%">
 					<div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<img src="https://cdn.dribbble.com/users/1322388/screenshots/6480681/online-banking1.jpg" class="d-block w-100" alt="...">
 								<div class="card carousel-caption d-none text-dark d-md-block pt-0">
-									<h5 class="card-header text-white bg-warning shadow">Ici un titre</h5>
+									<h5 class="card-header text-white bg-success shadow">Ici un titre</h5>
 									<p class="my-4">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-									<button class="btn bg-warning text-white shadow">voir</button>
+									<button class="btn bg-success text-white shadow">voir</button>
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img src="https://cdn.dribbble.com/users/1322388/screenshots/9732802/media/f6522ed90c43fa8952a6cfcf42745462.jpg" class="d-block w-100" alt="...">
 								<div class="card carousel-caption d-none text-dark d-md-block pt-0">
-									<h5 class="card-header text-white bg-warning shadow">Test numero 2</h5>
+									<h5 class="card-header text-white bg-success shadow">Test numero 2</h5>
 									<p class="my-4">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-									<button class="btn bg-warning text-white shadow">voir</button>
+									<button class="btn bg-success text-white shadow">voir</button>
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img src="https://cdn.dribbble.com/users/1322388/screenshots/6162733/shopping-2.jpg" class="d-block w-100" alt="...">
 								<div class="card carousel-caption d-none text-dark d-md-block pt-0">
-									<h5 class="card-header text-white bg-warning shadow">Plus d'idée</h5>
+									<h5 class="card-header text-white bg-success shadow">Plus d'idée</h5>
 									<p class="my-4">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-									<button class="btn bg-warning text-white shadow">voir</button>
+									<button class="btn bg-success text-white shadow">voir</button>
 								</div>
 							</div>
 						</div>
@@ -84,40 +81,29 @@
 				</article>
 				{#  Carousel END #}
 
-				{# Recover password #}
+				{# New password #}
 				<section class="container col-sm col-lg p-0">
-					<section class="card col-sm-12 container shadow mb-4 p-0">
+					<section class="card shadow col-sm-12 container mb-4 p-0">
 						<article class="text-center">
-							<h2 class="card-header shadow text-white bg-warning">Mot de passe oublié</h2>
-							{# Form recover password #}
+
+							<h2 class="card-header shadow text-white bg-success">Nouveau mot de passe</h2>
+
+							{# Form new password #}
 							<div class="my-5">
-
-								{% for flashes in app.flashes('Erreur lors de la réinitialisation du mot de passe') %}
-									<div class="alert alert-danger" role="alert">{{ flashes }}</div>
-								{% endfor %}
-
 								<div class="d-flex justify-content-center">
-									{{ form_start(requestForm) }}
-									{{ form_row(requestForm.email) }}
+									{{ form_start(resetForm) }}
+									{{ form_row(resetForm.plainPassword) }}
+									<button class="btn btn-success shadow">Valider</button>
+									{{ form_end(resetForm) }}
 								</div>
-
-								<div class="my-4">
-									<p>
-										Recevoir un lien de réinitialisation.
-									</p>
-								</div>
-
-								<button class="btn btn-warning text-white shadow my-4">valider</button>
-								{{ form_end(requestForm) }}
-
 							</div>
-							{# Form recover password END #}
+							{# Form new password END #}
+
 						</article>
 					</section>
 				</section>
-				{# Recover password END #}
+				{# New password END #}
 			</div>
-
 		</div>
 	</main>
 {% endblock %}

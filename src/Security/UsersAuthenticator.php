@@ -24,7 +24,7 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_ROUTE = 'app_me-connecter';
 
     private $entityManager;
     private $urlGenerator;
@@ -98,13 +98,13 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             return new RedirectResponse($targetPath);
         }
 
+        // NE PAS OUBLIER DE CONFIG LA ROUTE ADMIN
+        // if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        //     // c'est un aministrateur : on le rediriger vers l'espace admin
+        //     return new RedirectResponse($this->urlGenerator->generate('app_admin'));
+        // }
 
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            // c'est un aministrateur : on le rediriger vers l'espace admin
-            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
-        }
-
-        return new RedirectResponse($this->urlGenerator->generate('app_user'));
+        return new RedirectResponse($this->urlGenerator->generate('particulier_mon-espace'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

@@ -8,32 +8,46 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Accounts;
+use App\Entity\AccountTypes;
+use App\Entity\Users;
 use App\Form\AddAccountType;
 use Doctrine\DBAL\Types\TextType;
 
+/**
+ * Class UsersController
+ * @package App\Controller
+ * @Route("/particulier", name="particulier_")
+ */
 class UsersController extends AbstractController
 {
 
   /**
-     * @Route("/user", name="app_user")
+     * @Route("/mon-espace", name="mon-espace")
      */
     public function user(): Response
     {
-        return $this->render('user/user.html.twig');
+        // $accountType->setUser($this->getUser());
+        // $accountType->setOpeningDate(new \DateTime());
+        // $entityManager = $this->getDoctrine()->getManager();
+        // $entityManager->persist($accountType);
+
+        // $entityManager->flush();
+
+        return $this->render('particulier/mon-espace.html.twig');
     }
 
     /**
-     * @Route("/user/single", name="app_single")
+     * @Route("/mon-compte", name="mon-compte")
      */
-    public function single(): Response
+    public function myAccount(): Response
     {
-        return $this->render('user/single.html.twig');
+        return $this->render('particulier/mon-compte.html.twig');
     }
 
     /**
-     * @Route("/user/new_account", name="app_new_account")
+     * @Route("/ajouter-un-compte", name="ajouter-un-compte")
      */
-    public function new_account(Request $request): Response
+    public function addAccount(Request $request): Response
     {
         $account = new Accounts();
         $form = $this->createForm(AddAccountType::class);
@@ -49,19 +63,19 @@ class UsersController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute("app_user");
+            return $this->redirectToRoute("mon-espace");
         }
 
-        return $this->render('user/new_account.html.twig', [
+        return $this->render('particulier/ajouter-un-compte.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/user/identity", name="app_identity")
+     * @Route("/mon-identite", name="mon-identite")
      */
-    public function identity(): Response
+    public function myIdentity(): Response
     {
-        return $this->render('user/identity.html.twig');
+        return $this->render('particulier/mon-identite.html.twig');
     }
 }

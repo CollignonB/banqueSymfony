@@ -8,7 +8,7 @@
 
 	{% block nav %}
 		<nav class="navbar navbar-expand-lg navbar-light shadow border-secondary border-bottom col-md-9 ml-sm-auto col-lg-10 bg-white">
-			<a class="navbar-brand text-black" href="{{ path ("app_home") }}">ADALOVELACE</a>
+			<a class="navbar-brand text-black" href="{{ path ("app_accueil") }}">ADALOVELACE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="btn btn-light">MENU</span>
 			</button>
@@ -16,14 +16,14 @@
 			<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarHeaderToggler">
 				<ul class="nav align-items-center mx-5">
 					<li class="nav-item active">
-						<a class="nav-link text-dark" href="{{ path ("app_home") }}">Accueil<span class="sr-only">(current)</span>
+						<a class="nav-link text-dark" href="{{ path ("app_accueil") }}">Accueil<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="#">Actualités</a>
+						<a class="nav-link text-dark" href="{{ path ("app_actualite") }}">Actualités</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+						<a class="nav-link text-dark" href="{{ path ("app_equipe") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
@@ -48,32 +48,38 @@
 				<li>
 					{# {% if app.user %} #}
 					<div class="text-black mb-3 mx-0">
-						<h5 class="text-info font-weight-bold">  
-                        {{ app.user.firstname }}{{ app.user.lastname }} 
-                        {% if is_granted('ROLE_USER') %} <p class="text-danger">Administrateur</p> {% endif %}
-                    </h5>
+						<h5 class="text-info font-weight-bold">{{ app.user.firstname }}
+							{{ app.user.lastname }}</h5>
 					</div>
 					{# {% endif %} #}
 				</li>
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href="{{ path ("app_user") }}"><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
+					<a class="text-dark font-weight-bold" href="{{ path ("particulier_mon-espace") }}"><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
 						Mon Espace</a>
 				</li>
 
 				<li class="mt-4">
 					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bankIco.png') }}" alt="">Mes Comptes</p>
 					<ul>
-						<li><a class="text-dark"href="{{ path ('app_single') }}">Compte Courant</a></li>
-						<li><a class="text-dark"href="{{ path ('app_single') }}">Livret A</a></li>
-						<li><a class="text-dark"href="{{ path ('app_single') }}">PEL</a></li>
-						<li><a class="text-success font-weight-bold"href="{{ path ('app_new_account') }}">Ajouter un compte</a></li>
+						<li>
+							<a class="text-dark" href="{{ path ('particulier_mon-compte')}}">Compte Courant</a>
+						</li>
+						<li>
+							<a class="text-dark" href="{{ path ('particulier_mon-compte')}}">Livret A</a>
+						</li>
+						<li>
+							<a class="text-dark" href="{{ path ('particulier_mon-compte')}}">PEL</a>
+						</li>
+						<li>
+							<a class="text-success font-weight-bold" href="{{ path ('particulier_ajouter-un-compte')}}">Ajouter un compte</p>
+						</li>
 					</ul>
 				</li>
 
 				<li class="mt-4">
-					<p class="text-dark font-weight-bold" href=""><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</p>
+					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</p>
 					<ul>
-						<li><a class="text-dark"href="{{ path ('app_identity')}}">Mon indentité</a></li>
+						<li><a class="text-dark"href="{{ path ('particulier_mon-identite')}}">Mon indentité</a></li>
 						<li><a class="text-dark" href="">RIB</a></li>
 						<li><a class="text-dark" href="">BIC</a></li>
 					</ul>
@@ -115,7 +121,13 @@
 					<div class="col-sm col-lg-6">
 						<div class="card text-black shadow my-5 bg-white rounded">
 							<div class="card-header text-center">
+
 								<h5>Compte Courant</h5>
+								{# {% for accountTypes in app.user.accounts %}
+																		<h1>{{ account.amount}}</h1>
+																			
+																		{% endfor %} #}
+
 							</div>
 							<div class="d-flex">
 								<div class="card-body text-center">
@@ -125,6 +137,7 @@
 								<div class="card-body text-center">
 									<div class="card-body py-0">
 										<h5 class="card-title">Operations</h5>
+
 									</div>
 									<hr>
 									<div class="d-flex align-items-center justify-content-center p-0">

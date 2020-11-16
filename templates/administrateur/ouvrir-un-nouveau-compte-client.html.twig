@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
-
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 {% endblock %}
 
@@ -10,7 +8,7 @@
 
 	{% block nav %}
 		<nav class="navbar navbar-expand-lg navbar-light shadow border-secondary border-bottom col-md-9 ml-sm-auto col-lg-10 bg-white">
-			<a class="navbar-brand text-black" href="{{ path ("app_home") }}">ADALOVELACE</a>
+			<a class="navbar-brand text-black" href="{{ path ("administrateur_accueil") }}">ADALOVELACE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="btn btn-light">MENU</span>
 			</button>
@@ -18,17 +16,17 @@
 			<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarHeaderToggler">
 				<ul class="nav align-items-center mx-5">
 					<li class="nav-item active">
-						<a class="nav-link text-dark" href="{{ path ("app_home") }}">Accueil<span class="sr-only">(current)</span>
+						<a class="nav-link text-dark" href="{{ path ("administrateur_accueil") }}">Accueil<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-dark" href="#">Actualités</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ path ("app_teams") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
+						<a class="nav-link text-dark" href="{{ path ("administrateur_equipe") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
+						<a class="nav-link text-dark" href="{{ path ("administrateur_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
 					</li>
 					<li>
 						<input class="rounded" type="search" placeholder="recherche">
@@ -38,6 +36,9 @@
 
 		</nav>
 	{% endblock %}
+
+	{% block header %}{% endblock %}
+
 
 	{% block main %}
 
@@ -53,24 +54,24 @@
 					{# {% endif %} #}
 				</li>
 				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href="{{ path ('app_user')}}"><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
+					<a class="text-dark font-weight-bold" href="{{ path ('administrateur_administrateur')}}"><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
 						Mon Espace</a>
 				</li>
 
 				<li class="mt-4">
 					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bankIco.png') }}" alt="">Mes Comptes</p>
 					<ul>
-						<li><a class="text-dark"href="{{ path ('app_single')}}">Compte Courant</a></li>
-						<li><a class="text-dark"href="{{ path ('app_single')}}">Livret A</a></li>
-						<li><a class="text-dark"href="{{ path ('app_single')}}">PEL</a></li>
-						<li><a class="text-success font-weight-bold"href="{{ path ('app_new_account')}}">Ajouter un compte</a></li>
+						<li><a class="text-dark"href="{{ path ('administrateur_compte-client')}}">Compte Courant</a></li>
+						<li><a class="text-dark"href="{{ path ('administrateur_compte-client')}}">Livret A</a></li>
+						<li><a class="text-dark"href="{{ path ('administrateur_compte-client')}}">PEL</a></li>
+						<li><a class="text-success font-weight-bold"href="{{ path ('administrateur_ouvrir-un-nouveau-compte-client')}}">Ajouter un compte</a></li>
 					</ul>
 				</li>
 
 				<li class="mt-4">
 					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</p>
 					<ul>
-						<li><a class="text-dark"href="{{ path ('app_identity')}}">Mon indentité</a></li>
+						<li><a class="text-dark"href="{{ path ('administrateur_identite-client')}}">Mon indentité</a></li>
 						<li><a class="text-dark" href="">RIB</a></li>
 						<li><a class="text-dark" href="">BIC</a></li>
 					</ul>
@@ -101,7 +102,6 @@
 		{# ./asideNav #}
 
 		<main class="col-md-9 ml-sm-auto col-lg-12 px-md-4 mt-5">
-
 			<div>
 				{% for message in app.flashes('success') %}
 					<div class="alert alert-success" role="alert">{{ message }}</div>
@@ -109,51 +109,9 @@
 			</div>
 
 			<div class="container">
-				<h1 class="text-dark">SINGLE</h1>
-				<h6>Ajouter un bouton suppression ajouter bouton transfert</h6>
-				<h6>Ajouter
-				</h6>
 				<div class="row">
 					<div class="col-sm col-lg-6">
-						<div class="card text-black shadow my-5 bg-white rounded">
-							<div class="card-header text-center">
-								<h5>
-									{# {% for accounts in account %}
-																												{{ account.type }}
-																											{% endfor %} #}
-								</h5>
-							</div>
-							<div class="d-flex">
-								<div class="card-body text-center">
-									<h5 class="card-title text-white rounded bg-info p-2">75418<span class="text-warning">€</span>
-									</h5>
-								</div>
-								{# operation #}
-								<div class="card-body text-center">
-									<div class="card-body py-0">
-										<h5 class="card-title">Operations</h5>
-									</div>
-									<hr>
-									<div class="d-flex align-items-center justify-content-center p-0">
-										<p class="card-text col-10">Some quick example text to build on the card title.</p>
-										<p class="card-title font-weight-bold">- 418€</p>
-									</div>
-									<hr>
-									<div class="d-flex align-items-center justify-content-center p-0">
-										<p class="card-text col-10">Some quick example text to build on the card title.</p>
-										<p class="card-title font-weight-bold">+ 611€</p>
-									</div>
-									<hr>
-								</div>
-								{# ./operation #}
-							</div>
-							{# delete transfer #}
-							<div class="card-footer text-center">
-								<button class="btn btn-danger">Supprimer le compte</button>
-								<button class=" btn text-white btn-warning">Faire un transfert</button>
-							</div>
-
-						</div>
+						<h1>NEW ACCOUNT</h1>
 					</div>
 				</div>
 			</div>
