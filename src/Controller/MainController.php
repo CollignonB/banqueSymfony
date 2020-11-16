@@ -18,42 +18,6 @@ class MainController extends AbstractController
     }
 
     /**
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     * @Route("/user", name="app_user")
-     */
-    public function user(): Response
-    {
-        return $this->render('user/user.html.twig');
-    }
-
-    /**
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     * @Route("/single", name="app_single")
-     */
-    public function single(): Response
-    {
-        return $this->render('user/single.html.twig');
-    }
-
-    /**
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     * @Route("/new_account", name="app_new_account")
-     */
-    public function new_account(): Response
-    {
-        return $this->render('user/new_account.html.twig');
-    }
-
-    /**
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     * @Route("/identity", name="app_identity")
-     */
-    public function identity(): Response
-    {
-        return $this->render('user/identity.html.twig');
-    }
-
-    /**
      * @Route("/teams", name="app_teams")
      */
     public function teams(): Response
