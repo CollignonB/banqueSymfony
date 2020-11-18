@@ -49,7 +49,7 @@ class ResetPasswordController extends AbstractController
             );
         }
 
-        return $this->render('reset_password/request.html.twig', [
+        return $this->render('reset_password/mot-de-passe-oublie.html.twig', [
             'requestForm' => $form->createView(),
         ]);
     }
@@ -66,7 +66,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_forgot_password_request');
         }
 
-        return $this->render('reset_password/check_email.html.twig', [
+        return $this->render('reset_password/email-de-reinitialisation.html.twig', [
             'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
         ]);
     }
@@ -122,10 +122,10 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_me-connecter');
         }
 
-        return $this->render('reset_password/reset.html.twig', [
+        return $this->render('reset_password/nouveau-mot-de-passe.html.twig', [
             'resetForm' => $form->createView(),
         ]);
     }
@@ -141,7 +141,7 @@ class ResetPasswordController extends AbstractController
 
         // Do not reveal whether a user account was found or not.
         if (!$user) {
-            return $this->redirectToRoute('app_check_email');
+            return $this->redirectToRoute('app_email-de-reinitialisation');
         }
 
         try {
@@ -156,14 +156,14 @@ class ResetPasswordController extends AbstractController
             //     $e->getReason()
             // ));
 
-            return $this->redirectToRoute('app_check_email');
+            return $this->redirectToRoute('app_email-de-reinitialisation');
         }
 
         $email = (new TemplatedEmail())
             ->from(new Address('Adalovelace@bank.com', 'AdaLovelace-Bank'))
             ->to($user->getEmail())
             ->subject('AdaLovelace - Bank. Réinitialisation de mot de passe')
-            ->htmlTemplate('reset_password/email.html.twig')
+            ->htmlTemplate('reset_password/message-email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
                 'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
@@ -172,6 +172,6 @@ class ResetPasswordController extends AbstractController
 
         $mailer->send($email);
 
-        return $this->redirectToRoute('app_check_email');
+        return $this->redirectToRoute('app_email-de-reinitialisation');
     }
 }

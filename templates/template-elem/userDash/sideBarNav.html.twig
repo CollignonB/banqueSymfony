@@ -1,0 +1,107 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+{% endblock %}
+
+{# ./sideBarNav #}
+{% block sideBarNav %}
+
+	<nav
+		class="sidebar collaps bg-black rounded">
+
+		{# profil #}
+		<center>
+			{# profil picture #}
+			<img id="profile_image" src="https://avatars0.githubusercontent.com/u/67335568?s=400&u=ac5f6481217fb26a07edabe5856986caafbd5e19&v=4" alt=""/>
+			{# ./profil picture #}
+
+			{# profil First-LastName #}
+				<h3 class="text-white"> {{ app.user.lastName}}<br/>
+				{{app.user.firstName }}
+			</h3><br/>
+			{# ./profil First-LastName #}
+
+			{# profil Role #}
+				<h6 class="text-success"> {% if is_granted("ROLE_ADMIN") is same as TRUE %}
+					Compte : Administrateur
+				{% else %}
+					Compte : Client
+				{% endif %}
+			</h6>
+			{# ./profil Role #}
+		</center>
+		{# ./profil #}
+
+		{# sideBarMenu #}
+		<ul
+			class="mt-5">
+
+			{# my space #}
+			<a href="{{ path ('particulier_mon-espace') }}"><i class="fas fa-home text-warning mx-2"></i>Mon Espace</a>
+			{# ./my space #}
+
+			{# my account #}
+			<li class="my-4">
+				<a data-toggle="collapse" href="">
+					<i class="fas fa-money-check-alt text-warning mx-2"></i>Mes Comptes</a>
+				<ul>
+					{% for account in app.user.accounts %}
+						<li>
+							<a href="{{ path ('particulier_mon-compte', {id:account.id}) }}">{{account.AccountType.name}}</a>
+						</li>
+					{% endfor %}
+					<li>
+						<a class="text-success font-weight-bold" href="{{ path ('particulier_ajouter-un-compte') }}">Ajouter un compte</a>
+					</li>
+				</ul>
+			</li>
+			{# ./my account #}
+
+			{# my insurance #}
+			<li class="my-4">
+				<a data-toggle="collapse" href=""><i class="fas fa-shield-alt text-warning mx-2"></i>Mes Assurances</a>
+				<ul>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+				</ul>
+			</li>
+			{# ./my insurance #}
+
+			{# my info #}
+			<li class="my-4">
+				<a data-toggle="collapse" href="">
+					<i class="fas fa-user text-warning mx-2"></i>Mes Informations</a>
+				<ul>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+				</ul>
+			</li>
+			{# ./my info #}
+
+			{# ./my contact #}
+			<li class="my-4">
+				<a data-toggle="collapse" href="">
+					<i class="fas fa-comment text-warning mx-2"></i>Mes Contacts</a>
+				<ul>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+				</ul>
+			</li>
+			{# ./my contact #}
+			<li>
+				<a class="btn btn-danger shadow" href="{{ path ('app_logout') }}">Deconnexion</a>
+			</li>
+		</ul>
+		{# ./sideBarMenu #}
+
+
+	</nav>
+
+{% endblock %}
+{# ./sideBarNav #}

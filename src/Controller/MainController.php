@@ -10,27 +10,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home")
+     * @Route("/", name="app_accueil")
      */
     public function index(): Response
     {
-        return $this->render('home/home.html.twig');
+        return $this->render('home/accueil.html.twig');
     }
 
     /**
-     * @Route("/teams", name="app_teams")
+     * @Route("/equipe", name="app_equipe")
      */
     public function teams(): Response
     {
-        return $this->render('home/teams.html.twig');
+        return $this->render('home/equipe.html.twig');
     }
 
     /**
-     * @Route("/estimate", name="app_estimate")
+     * @Route("/estimation", name="app_estimation")
      */
     public function estimate(): Response
     {
-        return $this->render('home/estimate.html.twig');
+        return $this->render('home/estimation.html.twig');
     }
 
     /**
@@ -42,19 +42,19 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/insurance", name="app_insurance")
+     * @Route("/assurance", name="app_assurance")
      */
     public function insurance(): Response
     {
-        return $this->render('home/insurance.html.twig');
+        return $this->render('home/assurance.html.twig');
     }
 
     /**
-     * @Route("/news_letters", name="app_news_letters")
+     * @Route("/actualite", name="app_actualite")
      */
     public function news_letters(): Response
     {
-        return $this->render('home/news_letters.html.twig');
+        return $this->render('home/actualite.html.twig');
     }
 
     /**
