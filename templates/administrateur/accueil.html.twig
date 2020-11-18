@@ -59,13 +59,13 @@
 							<h5 class="card-header shadow bg-cyan text-white">MES ACCES RAPIDES</h5>
 							<ul class="nav flex justify-content-center m-5">
 								<li class="nav-item card m-2 shadow">
-									<a class="nav-link text-dark active" href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{path('app_user')}}{% else %}{{path('app_login')}}{% endif %}">Accéder à mes comptes</a>
+									<a class="nav-link text-dark active" href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{path('particulier_mon-espace')}}{% else %}{{path('app_me-connecter')}}{% endif %}">Accéder à mes comptes</a>
 								</li>
 								<li class="nav-item card m-2 shadow">
-									<a class="nav-link text-dark active" href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{path('app_user')}}{% else %}{{path('app_login')}}{% endif %}">Faire un virement</a>
+									<a class="nav-link text-dark active" href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{path('particulier_mon-espace')}}{% else %}{{path('app_me-connecter')}}{% endif %}">Faire un virement</a>
 								</li>
 								<li class="nav-item card m-2 shadow">
-									<a class="nav-link text-dark active" href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{path('app_user')}}{% else %}{{path('app_login')}}{% endif %}">Editer un RIB</a>
+									<a class="nav-link text-dark active" href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}{{path('particulier_mon-espace')}}{% else %}{{path('app_me-connecter')}}{% endif %}">Editer un RIB</a>
 								</li>
 								<li class="nav-item card m-2 shadow">
 									<a class="nav-link text-dark active" href="#">Prendre rendez-vous avec un conseiller</a>
