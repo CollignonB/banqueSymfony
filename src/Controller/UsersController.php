@@ -6,12 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\Accounts;
 use App\Repository\AccountsRepository;
 use App\Entity\Users;
 use App\Form\AddAccountType;
-use Doctrine\DBAL\Types\TextType;
+
+
 
 /**
  * Class UsersController
@@ -54,9 +55,9 @@ class UsersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $account = $form->getData();
 
+            $entityManager = $this->getDoctrine()->getManager();
             $account->setUser($this->getUser());
             $account->setOpeningDate(new \DateTime());
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($account);
 
             $entityManager->flush();
