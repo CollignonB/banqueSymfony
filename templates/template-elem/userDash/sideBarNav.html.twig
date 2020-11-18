@@ -1,3 +1,8 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+{% endblock %}
+
 {# ./sideBarNav #}
 {% block sideBarNav %}
 
@@ -32,12 +37,13 @@
 			class="mt-5">
 
 			{# my space #}
-			<a href="{{ path ('particulier_mon-espace') }}">Mon Espace</a>
+			<a href="{{ path ('particulier_mon-espace') }}"><i class="fas fa-home text-warning mx-2"></i>Mon Espace</a>
 			{# ./my space #}
 
 			{# my account #}
 			<li class="my-4">
-				<a data-toggle="collapse" href="">Mes Comptes</a>
+				<a data-toggle="collapse" href="">
+					<i class="fas fa-money-check-alt text-warning mx-2"></i>Mes Comptes</a>
 				<ul>
 					{% for account in app.user.accounts %}
 						<li>
@@ -53,7 +59,7 @@
 
 			{# my insurance #}
 			<li class="my-4">
-				<a data-toggle="collapse" href="">Mes Assurances</a>
+				<a data-toggle="collapse" href=""><i class="fas fa-shield-alt text-warning mx-2"></i>Mes Assurances</a>
 				<ul>
 					<li><a href=""></a></li>
 					<li><a href=""></a></li>
@@ -66,7 +72,7 @@
 			{# my info #}
 			<li class="my-4">
 				<a data-toggle="collapse" href="">
-					<i class="fas fa-user"></i>Mes Informations</a>
+					<i class="fas fa-user text-warning mx-2"></i>Mes Informations</a>
 				<ul>
 					<li><a href=""></a></li>
 					<li><a href=""></a></li>
@@ -78,7 +84,8 @@
 
 			{# ./my contact #}
 			<li class="my-4">
-				<a data-toggle="collapse" href="">Mes Contacts</a>
+				<a data-toggle="collapse" href="">
+					<i class="fas fa-comment text-warning mx-2"></i>Mes Contacts</a>
 				<ul>
 					<li><a href=""></a></li>
 					<li><a href=""></a></li>
