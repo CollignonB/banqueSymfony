@@ -8,39 +8,65 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
-* @Route("/admin", name="admin_")
+* Class UsersController
+* @package App\Controller
+* @Route("/administrateur", name="administrateur_")
 */
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/", name="admin")
+     * @Route("/", name="administrateur")
      */
-    public function admin(): Response
+    public function administrator(): Response
     {
-        return $this->render('admin/admin.html.twig');
+        return $this->render('administrateur/administrateur.html.twig');
     }
 
     /**
-     * @Route("/admin/single", name="app_single")
+     * @Route("/accueil", name="accueil")
      */
-    public function single(): Response
+    public function home(): Response
     {
-        return $this->render('admin/single.html.twig');
+        return $this->render('administrateur/accueil.html.twig');
     }
 
     /**
-     * @Route("/admin/new_account", name="app_new_account")
+     * @Route("/equipe", name="equipe")
      */
-    public function new_account(): Response
+    public function teams(): Response
     {
-        return $this->render('admin/new_account.html.twig');
+        return $this->render('administrateur/equipe.html.twig');
+    }
+
+        /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('administrateur/contact.html.twig');
     }
 
     /**
-     * @Route("/admin/identity", name="app_identity")
+     * @Route("/compte-client", name="compte-client")
      */
-    public function identity(): Response
+    public function accountsHowner(): Response
     {
-        return $this->render('admin/identity.html.twig');
+        return $this->render('administrateur/compte-client.html.twig');
+    }
+
+    /**
+     * @Route("/ouvrir-un-nouveau-compte-client", name="ouvrir-un-nouveau-compte-client")
+     */
+    public function openNewAccountHowner(): Response
+    {
+        return $this->render('administrateur/ouvrir-un-nouveau-compte-client.html.twig');
+    }
+
+    /**
+     * @Route("/identite-client", name="identite-client")
+     */
+    public function clientIdentity(): Response
+    {
+        return $this->render('administrateur/identite-client.html.twig');
     }
 }

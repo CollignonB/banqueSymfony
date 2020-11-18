@@ -8,40 +8,51 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\Accounts;
+use App\Repository\AccountsRepository;
+use App\Entity\Users;
 use App\Form\AddAccountType;
 
 
 
+/**
+ * Class UsersController
+ * @package App\Controller
+ * @param AccountsRepository $AccountsRepository
+ * @return Response
+ * @Route("/particulier", name="particulier_")
+ */
 class UsersController extends AbstractController
 {
 
-  /**
-     * @Route("/user", name="app_user")
+     /**
+     * @Route("/mon-espace", name="mon-espace")
      */
-    public function user(): Response
+    public function user()
     {
-        return $this->render('user/user.html.twig');
+        return $this->render('particulier/mon-espace.html.twig');
     }
 
     /**
-     * @Route("/user/single", name="app_single")
+     * @Route("/mon-compte/{id}", name="mon-compte", requirements={"id"="\d+"})
      */
-    public function single(): Response
+    public function myAccount(int $id)
     {
-        return $this->render('user/single.html.twig');
+        $AccountsRepository = $this->getDoctrine()->getRepository(Accounts::class);
+        $account = $AccountsRepository->find($id);
+        return $this->render('particulier/mon-compte.html.twig', [
+            'account' => $account,
+        ]);
     }
 
     /**
-     * @Route("/user/new_account", name="app_new_account")
+     * @Route("/ajouter-un-compte", name="ajouter-un-compte")
      */
-    public function new_account(Request $request): Response
+    public function addAccount(Request $request)
     {
         $account = new Accounts();
         $form = $this->createForm(AddAccountType::class);
         $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $account = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -51,19 +62,19 @@ class UsersController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute("app_user");
+            return $this->redirectToRoute("mon-espace");
         }
 
-        return $this->render('user/new_account.html.twig', [
+        return $this->render('particulier/ajouter-un-compte.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/user/identity", name="app_identity")
+     * @Route("/mon-identite", name="mon-identite")
      */
-    public function identity(): Response
+    public function myIdentity()
     {
-        return $this->render('user/identity.html.twig');
+        return $this->render('particulier/mon-identite.html.twig');
     }
 }
