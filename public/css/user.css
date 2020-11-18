@@ -1,105 +1,90 @@
 body {
-    font-size: .875rem;
-    background-color: #f6f9fc;
-  }
-  
-  .feather {
-    width: 16px;
-    height: 16px;
-    vertical-align: text-bottom;
-  }
-  
-  /*
-   * Sidebar
-   */
-  
-  .sidebar {
+    background-color: rgb(6, 6, 31);
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.bg-ligthBlack {
+    background-color: rgb(28, 4, 37) !important;
+}
+
+.bg-darkb {
+    background-color: rgb(13, 13, 61);
+}
+
+.bg-darkGrey {
+    background-color: rgba(68, 68, 68, 0.849) !important;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-danger {
+    background-color: rgba(110, 0, 0, 527);
+    border-color: rgba(110, 0, 0, 0.219);
+}
+
+.btn-success {
+    background-color: rgba(0, 109, 82, 0.527);
+    border-color: rgba(0, 109, 82, 0.246);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: cadetblue;
+    text-decoration: none;
+}
+
+.card {
+    background-color: rgba(41, 41, 41, 0.308) !important;
+    border: 0;
+}
+
+.card>h5 {
+    background-color: rgba(58, 58, 58, 0.849) !important;
+    border: 0;
+}
+
+.card-body {
+    border: 0;
+}
+
+.card-header {
+    padding: 10px 0 !important;
+}
+
+.sidebar {
     position: fixed;
-    top: 0;
-    bottom: 0;
     left: 0;
-    z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.061);
-  }
-  
-  @media (max-width: 767.98px) {
-    .sidebar {
-      top: 5rem;
-    }
-  }
-  
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  }
-  
-  @supports ((position: -webkit-sticky) or (position: sticky)) {
-    .sidebar-sticky {
-      position: -webkit-sticky;
-      position: sticky;
-    }
-  }
-  
-  .sidebar .nav-link {
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .sidebar .nav-link .feather {
-    margin-right: 4px;
-    color: #999;
-  }
-  
-  .sidebar .nav-link.active {
-    color: #007bff;
-  }
-  
-  .sidebar .nav-link:hover .feather,
-  .sidebar .nav-link.active .feather {
-    color: inherit;
-  }
-  
-  .sidebar-heading {
-    font-size: .75rem;
-    text-transform: uppercase;
-  }
-  
-  /*
-   * Navbar
-   */
-  
-  .navbar-brand {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    font-size: 1rem;
-    /* background-color: rgba(0, 0, 0, .25); */
-    /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25); */
-  }
-  
-  .navbar .navbar-toggler {
-    top: .25rem;
-    right: 1rem;
-  }
-  
-  .navbar .form-control {
-    padding: .75rem 1rem;
-    border-width: 0;
-    border-radius: 0;
-  }
-  
-  .form-control-dark {
-    color: #fff;
-    background-color: rgba(255, 255, 255, .1);
-    border-color: rgba(255, 255, 255, .1);
-  }
-  
-  .form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-  }
-  
+    top: 55px;
+    width: 250px;
+    height: 100%;
+    box-shadow: 20px 0px 52px -20px rgb(0, 0, 0);
+}
+
+.sidebar #profile_image {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    box-shadow: 10px 0px 52px -10px rgb(0, 0, 0);
+}
+
+.content {
+    margin-left: 250px;
+    margin-top: 55px;
+    height: 100vh;
+    transition: 0.5s;
+}
+
+.wrapper {
+    display: flex;
+    transition: all 0.5s;
+}

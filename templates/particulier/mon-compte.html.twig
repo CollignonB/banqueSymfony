@@ -7,10 +7,10 @@
 
 {% block body %}
 
-
+	{# Top nav #}
 	{% block nav %}
-		<nav class="navbar navbar-expand-lg navbar-light shadow border-secondary border-bottom col-md-9 ml-sm-auto col-lg-10 bg-white">
-			<a class="navbar-brand text-black" href="{{ path ("app_accueil") }}">ADALOVELACE</a>
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow col-md-9 ml-sm-auto col-lg-12 bg-black">
+			<a class="navbar-brand text-warning ml-5" href="{{ path ("app_accueil") }}">ADALOVELACE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="btn btn-light">MENU</span>
 			</button>
@@ -18,17 +18,14 @@
 			<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarHeaderToggler">
 				<ul class="nav align-items-center mx-5">
 					<li class="nav-item active">
-						<a class="nav-link text-dark" href="{{ path ("app_accueil") }}">Accueil<span class="sr-only">(current)</span>
+						<a class="nav-link text-white" href="{{ path ("app_accueil") }}">Accueil<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="#">Actualités</a>
+						<a class="nav-link text-white" href="{{ path ("app_actualite") }}">Actualités</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ path ("app_equipe") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ path ("app_contact") }}" tabindex="-1" aria-disabled="true">Contact</a>
+						<a class="nav-link text-white" href="{{ path ("app_equipe") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 					</li>
 					<li>
 						<input class="rounded" type="search" placeholder="recherche">
@@ -38,133 +35,79 @@
 
 		</nav>
 	{% endblock %}
+	{# Top nav #}
 
 	{% block main %}
 
-		{# asideNav #}
-		<nav class="sidebar text-black col-sm col-lg-2 border-right border-secondary bg-white p-0">
-			<ul class="card-body">
-				<li>
-					{# {% if app.user %} #}
-					<div class="text-black mb-3 mx-0">
-						<h5 class="text-info font-weight-bold">{{ app.user.firstname }}
-							{{ app.user.lastname }}</h5>
-					</div>
-					{# {% endif %} #}
-				</li>
-				<li class="mt-4">
-					<a class="text-dark font-weight-bold" href="{{ path ("particulier_mon-espace") }}"><img class="mx-2" src="{{ asset('img/homeIco.png') }}" alt="">
-						Mon Espace</a>
-				</li>
+		<main
+			class="wrapper">
 
-				<li class="mt-4">
-					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bankIco.png') }}" alt="">Mes Comptes</p>
-					<ul>
-						<li>
-							<a class="text-dark" href="{{ path ('particulier_mon-compte')}}">Compte Courant</a>
-						</li>
-						<li>
-							<a class="text-dark" href="{{ path ('particulier_mon-compte')}}">Livret A</a>
-						</li>
-						<li>
-							<a class="text-dark" href="{{ path ('particulier_mon-compte')}}">PEL</a>
-						</li>
-						<li>
-							<a class="text-success font-weight-bold" href="{{ path ('particulier_ajouter-un-compte')}}">Ajouter un compte</p>
-						</li>
-					</ul>
-				</li>
+			{# sideNavBar #}
+			{% include "template-elem/userDash/sideBarNav.html.twig" %}
+			{# sideNavBar #}
 
-				<li class="mt-4">
-					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/bookIco.png') }}" alt="">Mes Informations</p>
-					<ul>
-						<li><a class="text-dark"href="{{ path ('particulier_mon-identite')}}">Mon indentité</a></li>
-						<li><a class="text-dark" href="">RIB</a></li>
-						<li><a class="text-dark" href="">BIC</a></li>
-					</ul>
-				</li>
+			<div
+				class="content">
 
-				<li class="mt-4">
-					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/secuIco.png') }}" alt="">Mes Assurances</p>
-					<ul>
-						<li><a class="text-dark" href="">Santé</a></li>
-						<li><a class="text-dark" href="">Immobilier</a></li>
-						<li><a class="text-dark" href="">Automobile</a></li>
-					</ul>
-				</li>
+				{# navMiddle #}
+				{% include "template-elem/userDash/navMiddle.html.twig" %}
+				{# ./navMiddle #}
 
-				<li class="mt-4">
-					<p class="text-dark font-weight-bold"><img class="mx-2" src="{{ asset('img/contactIco.png') }}" alt="">Contact en Agence</p>
-					<ul>
-						<li><a class="text-dark" href="">Mon conseiller</a></li>
-					</ul>
-				</li>
-				<li class="text-center mt-5">
-					<a class="text-center text-danger border-top border-white bg-dark" href="{{ path ('app_logout') }}">
-						<h5 class="btn btn-danger text-white font-weight-bold">Deconnexion</h5>
-					</a>
-				</li>
-			</ul>
-		</nav>
-		{# ./asideNav #}
-
-		<main class="col-md-9 ml-sm-auto col-lg-12 px-md-4 mt-5">
-
-			<div>
-				{% for message in app.flashes('success') %}
-					<div class="alert alert-success" role="alert">{{ message }}</div>
-				{% endfor %}
-			</div>
-
-			<div class="container">
-				<h1 class="text-dark">SINGLE</h1>
-				<h6>Ajouter un bouton suppression ajouter bouton transfert</h6>
-				<h6>Ajouter
-				</h6>
 				<div class="row">
-					<div class="col-sm col-lg-6">
-						<div class="card text-black shadow my-5 bg-white rounded">
-							<div class="card-header text-center">
-								<h5>
-									{# {% for accounts in account %}
-																																														{{ account.type }}
-																																													{% endfor %} #}
+					<div class="col-lg d-flex flex-wrap justify-content-center my-5">
+						<div class="card text-white shadow  mb-5 bg-white rounded">
+							<div class="card-header bg-ligthBlack text-center shadow">
+								<h4 class="text-white">{{account.AccountType.name}}</h4>
+							</div>
+							<div class="card bg-darkGrey mx-auto mt-3 mb-3">
+								<h5 class="card-title font-weight-bold m-1 p-2">Solde :
+									{{account.amount}}
+									<span class="text-warning">€</span>
 								</h5>
 							</div>
-							<div class="d-flex">
-								<div class="card-body text-center">
-									<h5 class="card-title text-white rounded bg-info p-2">75418<span class="text-warning">€</span>
-									</h5>
-								</div>
-								{# operation #}
-								<div class="card-body text-center">
-									<div class="card-body py-0">
-										<h5 class="card-title">Operations</h5>
-									</div>
-									<hr>
-									<div class="d-flex align-items-center justify-content-center p-0">
-										<p class="card-text col-10">Some quick example text to build on the card title.</p>
-										<p class="card-title font-weight-bold">- 418€</p>
-									</div>
-									<hr>
-									<div class="d-flex align-items-center justify-content-center p-0">
-										<p class="card-text col-10">Some quick example text to build on the card title.</p>
-										<p class="card-title font-weight-bold">+ 611€</p>
-									</div>
-									<hr>
-								</div>
-								{# ./operation #}
-							</div>
-							{# delete transfer #}
-							<div class="card-footer text-center">
-								<button class="btn btn-danger">Supprimer le compte</button>
-								<button class=" btn text-white btn-warning">Faire un transfert</button>
-							</div>
+							<div class="card-body">
+								<div class="d-flex flex-column">
+									{% for transfert in account.transferts %}
+										<div class="d-flex align-items-center">
+											<div class="mx-3 mt-2">
+												<p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											</div>
+											<div class="mx-3">
+												<p class="card-title m-0">
+													<span class="bg-white">|</span>
+													<span class="font-weight-bold">{{transfert.amount}}</span>
+													<span class="text-warning">€</span>
+												</p>
+											</div>
+										</div>
+										<hr class="bg-white m-3">
+									{% endfor %}
 
+								</div>
+
+							</div>
+							<div
+								class="card-footer text-center">
+
+								{# delete account #}
+								<a class="btn btn-danger shadow" href="">Supprimer mon compte</a>
+								<div class="collapse" id="">
+									<div class="card card-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+									</div>
+								</div>
+								{# ./delete account #}
+
+								<a class="btn btn-success shadow" href="">Faire un virement</a>
+							</div>
+						</div>
+						<div class="col-4 card text-black shadow mx-2 mb-5 bg-white rounded">
+							<img src="https://png2.cleanpng.com/sh/4ec80895cc44d4ebaefdbb663c2e6117/L0KzQYi4UsA4N5c8SpGAYUK8QrPsUPQyO2Y6UJC9M0O1RYe5UsE2OWM7TKkBNEi7RYeCTwBvbz==/5a292be0d13558.4332562215126476488569.png" alt="" style="heigth: 100%; width: 39rem">
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</main>
 	{% endblock %}
 

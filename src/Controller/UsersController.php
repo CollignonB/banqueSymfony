@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Accounts;
-use App\Entity\AccountTypes;
+use App\Repository\AccountsRepository;
 use App\Entity\Users;
 use App\Form\AddAccountType;
 use Doctrine\DBAL\Types\TextType;
@@ -16,44 +16,42 @@ use Doctrine\DBAL\Types\TextType;
 /**
  * Class UsersController
  * @package App\Controller
+ * @param AccountsRepository $AccountsRepository
+ * @return Response
  * @Route("/particulier", name="particulier_")
  */
 class UsersController extends AbstractController
 {
 
-  /**
+     /**
      * @Route("/mon-espace", name="mon-espace")
      */
-    public function user(): Response
+    public function user()
     {
-        // $accountType->setUser($this->getUser());
-        // $accountType->setOpeningDate(new \DateTime());
-        // $entityManager = $this->getDoctrine()->getManager();
-        // $entityManager->persist($accountType);
-
-        // $entityManager->flush();
-
         return $this->render('particulier/mon-espace.html.twig');
     }
 
     /**
-     * @Route("/mon-compte", name="mon-compte")
+     * @Route("/mon-compte/{id}", name="mon-compte", requirements={"id"="\d+"})
      */
-    public function myAccount(): Response
+    public function myAccount(int $id)
     {
-        return $this->render('particulier/mon-compte.html.twig');
+        $AccountsRepository = $this->getDoctrine()->getRepository(Accounts::class);
+        $account = $AccountsRepository->find($id);
+        return $this->render('particulier/mon-compte.html.twig', [
+            'account' => $account,
+        ]);
     }
 
     /**
      * @Route("/ajouter-un-compte", name="ajouter-un-compte")
      */
-    public function addAccount(Request $request): Response
+    public function addAccount(Request $request)
     {
         $account = new Accounts();
         $form = $this->createForm(AddAccountType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $account = $form->getData();
 
             $account->setUser($this->getUser());
@@ -74,7 +72,7 @@ class UsersController extends AbstractController
     /**
      * @Route("/mon-identite", name="mon-identite")
      */
-    public function myIdentity(): Response
+    public function myIdentity()
     {
         return $this->render('particulier/mon-identite.html.twig');
     }
