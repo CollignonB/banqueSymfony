@@ -1,81 +1,84 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+	Mon Espace
+{% endblock %}
+
 {% block stylesheets %}{% endblock %}
 
-	{# navBarTop #}
-	{% block nav %}
-		{% include "template-elem/userDash/navTop.html.twig" %}
-	{% endblock %}
-	{# ./navBarTop #}
+{# navBarTop #}
+{% block nav %}
+	{% include "template-elem/userDash/navTop.html.twig" %}
+{% endblock %}
+{# ./navBarTop #}
 
-	{% block header %}{% endblock %}
+{% block header %}{% endblock %}
 
-	{% block main %}
+{% block main %}
 
-		<main
-			class="wrapper">
+	<main
+		class="wrapper">
 
-			{# sideNavBar #}
-			{% include "template-elem/userDash/sideBarNav.html.twig" %}
-			{# ./sideNavBar #}
+		{# sideNavBar #}
+		{% include "template-elem/userDash/sideBarNav.html.twig" %}
+		{# ./sideNavBar #}
 
-			{# main Content #}
-				<div
-				class="content"> {# navMiddle #}
-				{% include "template-elem/userDash/navMiddle.html.twig" %}
-				{# ./navMiddle #}
+		{# main Content #}
+			<div
+			class="content"> {# navMiddle #}
+			{% include "template-elem/userDash/navMiddle.html.twig" %}
+			{# ./navMiddle #}
 
-				<div class="row">
-					<div class="col-lg d-flex flex-wrap justify-content-center my-5">
-						{% for account in app.user.accounts %}
-							<div class="card text-white shadow  mb-5 bg-white rounded" style="heigth: 100%;">
-								<div class="card-header bg-ligthBlack text-center shadow">
-									<h4 class="text-white">{{account.AccountType.name}}</h4>
-								</div>
-								<div class="card bg-darkGrey mx-auto mt-3 mb-3">
-									<h5 class="card-title font-weight-bold m-1 p-2">Solde :
-										{{account.amount}}
-										<span class="text-warning">€</span>
-									</h5>
-								</div>
-								<div class="card-body">
-									<div class="d-flex flex-column">
-										{% for transfert in account.transferts|slice(0, 1) %}
-											<div class="d-flex align-items-center">
-												<div class="mx-3 mt-2">
-													<p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-												</div>
-												<div class="mx-3">
-													<p class="card-title m-0">
-														<span class="bg-white">|</span>
-														<span class="font-weight-bold">{{transfert.amount}}</span>
-														<span class="text-warning">€</span>
-													</p>
-												</div>
+			<div class="row">
+				<div class="col-lg d-flex flex-wrap justify-content-center my-5">
+					{% for account in app.user.accounts %}
+						<div class="card text-white shadow  mb-5 bg-white rounded" style="heigth: 100%;">
+							<div class="card-header bg-ligthBlack text-center shadow">
+								<h4 class="text-white">{{account.AccountType.name}}</h4>
+							</div>
+							<div class="card bg-darkGrey mx-auto mt-3 mb-3">
+								<h5 class="card-title font-weight-bold m-1 p-2">Solde :
+									{{account.amount}}
+									<span class="text-warning">€</span>
+								</h5>
+							</div>
+							<div class="card-body">
+								<div class="d-flex flex-column">
+									{% for transfert in account.transferts|slice(0, 1) %}
+										<div class="d-flex align-items-center">
+											<div class="mx-3 mt-2">
+												<p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 											</div>
-											<hr class="bg-white m-3">
-										{% endfor %}
-
-									</div>
+											<div class="mx-3">
+												<p class="card-title m-0">
+													<span class="bg-white">|</span>
+													<span class="font-weight-bold">{{transfert.amount}}</span>
+													<span class="text-warning">€</span>
+												</p>
+											</div>
+										</div>
+										<hr class="bg-white m-3">
+									{% endfor %}
 
 								</div>
-								<div class="card-footer text-center">
-									<a class="btn btn-info shadow" href="{{ path ('particulier_mon-compte', {id:account.id}) }}">Visualiser mon compte</a>
-								</div>
+
 							</div>
-							<div class="col-4 card text-black shadow mx-2 mb-5 bg-white rounded" style="height: 10rem; width: 10rem">
-								<img src="https://cdn.icon-icons.com/icons2/1194/PNG/512/1490886330-30-diagram_82477.png" alt="" style="height: 10rem; width: 10rem">
+							<div class="card-footer text-center">
+								<a class="btn btn-info shadow" href="{{ path ('particulier_mon-compte', {id:account.id}) }}">Visualiser mon compte</a>
 							</div>
-						{% endfor %}
-					</div>
+						</div>
+						<div class="col-4 card text-black shadow mx-2 mb-5 bg-white rounded" style="height: 10rem; width: 10rem">
+							<img src="https://cdn.icon-icons.com/icons2/1194/PNG/512/1490886330-30-diagram_82477.png" alt="" style="height: 10rem; width: 10rem">
+						</div>
+					{% endfor %}
 				</div>
-
 			</div>
-			{# main Content #}
 
-		</main>
-		
-	{% endblock %}
+		</div>
+		{# main Content #}
 
-	{% block footer %}{% endblock %}
+	</main>
 
+{% endblock %}
+
+{% block footer %}{% endblock %}

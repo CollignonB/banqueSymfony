@@ -24,7 +24,7 @@ use App\Form\AddAccountType;
 class UsersController extends AbstractController
 {
 
-     /**
+    /**
      * @Route("/mon-espace", name="mon-espace")
      */
     public function user()
@@ -38,7 +38,9 @@ class UsersController extends AbstractController
     public function myAccount(int $id)
     {
         $AccountsRepository = $this->getDoctrine()->getRepository(Accounts::class);
+        
         $account = $AccountsRepository->find($id);
+
         return $this->render('particulier/mon-compte.html.twig', [
             'account' => $account,
         ]);
@@ -62,7 +64,7 @@ class UsersController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute("mon-espace");
+            return $this->redirectToRoute('particulier_mon-espace');
         }
 
         return $this->render('particulier/ajouter-un-compte.html.twig', [
