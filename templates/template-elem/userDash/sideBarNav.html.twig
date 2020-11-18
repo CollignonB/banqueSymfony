@@ -28,7 +28,8 @@
 		{# ./profil #}
 
 		{# sideBarMenu #}
-		<ul class="mt-5">
+		<ul
+			class="mt-5">
 
 			{# my space #}
 			<a href="{{ path ('particulier_mon-espace') }}">Mon Espace</a>
@@ -64,7 +65,8 @@
 
 			{# my info #}
 			<li class="my-4">
-				<a data-toggle="collapse" href=""><i class="fas fa-user"></i>Mes Informations</a>
+				<a data-toggle="collapse" href="">
+					<i class="fas fa-user"></i>Mes Informations</a>
 				<ul>
 					<li><a href=""></a></li>
 					<li><a href=""></a></li>
@@ -85,7 +87,9 @@
 				</ul>
 			</li>
 			{# ./my contact #}
-
+			<li>
+				<a class="btn btn-danger shadow" href="{{ path ('app_logout') }}">Deconnexion</a>
+			</li>
 		</ul>
 		{# ./sideBarMenu #}
 
