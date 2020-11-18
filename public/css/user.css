@@ -31,6 +31,11 @@ body {
     border-color: rgba(0, 109, 82, 0.246);
 }
 
+.btn-info {
+    background-color: rgba(0, 65, 109, 0.527);
+    border-color: rgba(0, 65, 109, 0.527);
+}
+
 a {
     color: white;
     text-decoration: none;

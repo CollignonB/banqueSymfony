@@ -3,14 +3,13 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 {% endblock %}
 
-{% block body %}
-
+	{# navBarTop #}
 	{% block nav %}
 		{% include "template-elem/userDash/navTop.html.twig" %}
 	{% endblock %}
+	{# ./navBarTop #}
 
 	{% block header %}{% endblock %}
-
 
 	{% block main %}
 
@@ -22,9 +21,8 @@
 			{# ./sideNavBar #}
 
 			{# main Content #}
-			<div class="content"> 
-
-				{# navMiddle #}
+				<div
+				class="content"> {# navMiddle #}
 				{% include "template-elem/userDash/navMiddle.html.twig" %}
 				{# ./navMiddle #}
 
@@ -72,12 +70,11 @@
 						{% endfor %}
 					</div>
 				</div>
-				
+
 			</div>
 			{# main Content #}
-
 
 		</main>
 	{% endblock %}
 	{% block footer %}{% endblock %}
-{% endblock %}
+
