@@ -106,11 +106,6 @@ class AppFixtures extends Fixture
     
             $manager->persist($admin);
 
-             // create account types
-             $accountType = new AccountTypes();
-
-             $accountType->setName($baseAccountTypes[$d]);
-             $manager->persist($accountType);
 
              // create accounts, all account for the same user has the same type
              for ($l = 0; $l < 4; $l++) {
