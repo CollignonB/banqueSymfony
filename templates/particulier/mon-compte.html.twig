@@ -91,14 +91,10 @@
 
 								{# delete account #}
 								<a class="btn btn-danger shadow" href="">Supprimer mon compte</a>
-								<div class="collapse" id="">
-									<div class="card card-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-									</div>
-								</div>
+
 								{# ./delete account #}
 
-								{# <a class="btn btn-success shadow" href="{{ path ("make-transfert") }}">Faire un virement</a> #}
+								<a class="btn btn-success shadow" href="{{ path ("particulier_transfert", {id:account.id}) }}">Faire un virement</a>
 							</div>
 						</div>
 						<div class="col-4 card text-black shadow mx-2 mb-5 bg-white rounded">

@@ -81,7 +81,7 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/mon-compte/{id}/transfert", name="make-transfert")
+     * @Route("/mon-compte/{id}/transfert", name="transfert")
      */
     public function transfert(int $id, Request $request)
     {
