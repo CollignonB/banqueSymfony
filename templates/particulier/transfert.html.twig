@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
+	{# navBarTop #}
+	{% block nav %}
+		{% include "template-elem/userDash/navTop.html.twig" %}
+	{% endblock %}
+	{# ./navBarTop #}
+
+	{% block header %}{% endblock %}
+
+
+	{% block main %}
+
+		<main
+			class="col-md-9 ml-sm-auto col-lg-12 px-md-4 mt-5">
+
+			{# sideNavBar #}
+			{% include "template-elem/userDash/sideBarNav.html.twig" %}
+			{# sideNavBar #}
+
+			{# main Content #}
+				<div
+				class="content"> {# navMiddle #}
+				{% include "template-elem/userDash/navMiddle.html.twig" %}
+				{# ./navMiddle #}
+
+			<div class="container">
+				<div class="row">
+					<div class="col-sm col-lg-6 text-white mt-5">
+						<h1>Effectuer une oprétaion sur le compte</h1>
+						{{form(form)}}
+						</div>
+					</div>
+				</div>
+			</main>
+		{% endblock %}
+
+		{% block footer %}{% endblock %}
