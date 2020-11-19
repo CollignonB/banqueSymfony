@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{# TitlePage #}
 {% block title %}
 	AdaLovelace -
 	{{account.AccountType.name}}
 {% endblock %}
+{# ./TitlePage #}
 
+{# stylessheetForDashboard #}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 {% endblock %}
+{# ./stylessheetForDashboard #}
 
 {# navBarTop #}
 {% block nav %}
@@ -98,8 +102,9 @@
 			{# ./Account #}
 		</div>
 	</main>
-	{# Main content #}
-
+	{# ./Main content #}
 {% endblock %}
 
+{# footer !! dont delete !! #}
 {% block footer %}{% endblock %}
+{# ./footer !! dont delete !! #}
