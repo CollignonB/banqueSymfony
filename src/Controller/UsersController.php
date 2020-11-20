@@ -64,7 +64,7 @@ class UsersController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute("mon-espace");
+            return $this->redirectToRoute("particulier_mon-espace");
         }
 
         return $this->render('particulier/ajouter-un-compte.html.twig', [
@@ -94,7 +94,7 @@ class UsersController extends AbstractController
         {
             $transfert = $form->getData();
 
-            dump($transfert);
+            // dump($transfert);
 
             $entityManager = $this->getDoctrine()->getManager();
             $transfert->setDateTransfert(new \DateTime());
@@ -113,10 +113,10 @@ class UsersController extends AbstractController
                 $amount += $transfert->getAmount();
                 $account->setAmount($amount);
             }
-            dump($account);
+            // dump($account);
             $entityManager->persist($account);
             $entityManager->flush();
-            // return $this->redirectToRoute("mon-espace");
+            return $this->redirectToRoute("particulier_mon-espace");
         }
         return $this->render('particulier/transfert.html.twig', [
             'form' => $form->createView(),
