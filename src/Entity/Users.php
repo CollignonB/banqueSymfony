@@ -51,7 +51,7 @@ class Users implements UserInterface
      */
     private $password;
 
-        /**
+    /**
      * @ORM\Column(type="string", length=30)
      */
     private $city;
@@ -243,7 +243,7 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
-        /**
+    /**
      * @return Collection|Accounts[]
      */
     public function getAccounts(): Collection

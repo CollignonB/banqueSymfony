@@ -26,7 +26,7 @@ use App\Form\TransfertType;
 class UsersController extends AbstractController
 {
 
-     /**
+    /**
      * @Route("/mon-espace", name="mon-espace")
      */
     public function user()
@@ -40,14 +40,16 @@ class UsersController extends AbstractController
     public function myAccount(int $id)
     {
         $AccountsRepository = $this->getDoctrine()->getRepository(Accounts::class);
+        
         $account = $AccountsRepository->find($id);
+
         return $this->render('particulier/mon-compte.html.twig', [
             'account' => $account,
         ]);
     }
 
     /**
-     * @Route("/ajouter-un-compte", name="ajouter-un-compte")
+     * @Route("/ouvrir-un-compte", name="ouvrir-un-compte")
      */
     public function addAccount(Request $request)
     {
@@ -64,10 +66,10 @@ class UsersController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute("particulier_mon-espace");
+            return $this->redirectToRoute('particulier_mon-espace');
         }
 
-        return $this->render('particulier/ajouter-un-compte.html.twig', [
+        return $this->render('particulier/ouvrir-un-compte.html.twig', [
             'form' => $form->createView(),
         ]);
     }

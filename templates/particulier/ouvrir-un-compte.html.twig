@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{# TitlePage #}
+{% block title %}
+	AdaLovelace - Nouveau Compte
+{% endblock %}
+{# ./TitlePage #}
+
+{# stylessheetForDashboard #}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+{# ./stylessheetForDashboard #}
+
+{# navBarTop #}
+{% block nav %}
+	{% include "template-elem/userDash/navTop.html.twig" %}
+{% endblock %}
+{# ./navBarTop #}
+
+{# header !! dont delete !! #}
+{% block header %}{% endblock %}
+{# ./header !! dont delete !! #}
+
+{# Main content #}
+{% block main %}
+
+	<main
+		class="col-md-9 ml-sm-auto col-lg-12 px-md-4 mt-5">
+
+		{# sideNavBar #}
+		{% include "template-elem/userDash/sideBarNav.html.twig" %}
+		{# sideNavBar #}
+
+		<div
+			class="content">
+
+			{# addAccount Form #}
+			<div class="container">
+				<div class="row">
+					<div class="container-fluid text-dark text-center  p-0">
+						<div class="col-2 card mt-5">
+							<h5 class="p-2">Ouvrir un compte</h5>
+						</div>
+					</div>
+					<div class="col-sm col-lg-6 card text-dark my-5">
+						<div class="m-5">
+							{{form(form)}}
+							</div>
+						</div>
+					</div>
+					{# addAccount Form #}
+
+				</main>
+			{% endblock %}
+			{# ./Main content #}
+
+			{# footer !! dont delete !! #}
+			{% block footer %}{% endblock %}
+			{# ./footer !! dont delete !! #}
