@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AdaLovelace - teams
+{# TitlePage #}
+{% block title %}
+	AdaLovelace - Equipe
 {% endblock %}
+{# ./TitlePage #}
 
+{# stylessheetForDashboard #}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/teams.css') }}">
 {% endblock %}
+{# ./stylessheetForDashboard #}
 
-{# Navbar Block #}
+{# navBarTop #}
 {% block nav %}
 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light shadow bg-white">
@@ -16,7 +21,7 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="btn btn-light">MENU</span>
 		</button>
-		{# collapse navbar END #}
+		{# ./collapse navbar #}
 
 		<div
 			class="collapse navbar-collapse justify-content-end" id="navbarHeaderToggler">
@@ -33,23 +38,23 @@
 				<li class="nav-item">
 					<a class="nav-link text-dark" href="{{ path ("app_equipe") }}" tabindex="-1" aria-disabled="true">Nos Equipes</a>
 				</li>
-			{# ul navbar END #}
+			</ul>
+			{# ./ul navbar #}
 
-
-			{# Login Logout condition #}
+			{# Login Logout #}
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<a href="{{path('particulier_mon-espace')}}" class="btn btn-sm text-white btn-success shadow m-2 my-sm-0">Mon Espace</a>
 				<a href="{{path('app_logout')}}" class="btn btn-sm btn-danger shadow m-2 my-sm-0">Deconnexion</a>
 			{% else %}
 				<a href="{{ path ("app_login") }}" class="btn btn-sm btn-primary text-white shadow m-2 my-sm-0" type="button">Mon Espace</a>
 			{% endif %}
-			{# Login Logout condition END #}
+			{# ./Login Logout #}
 
 		</div>
 	</nav>
 
 {% endblock %}
-{# Navbar Block END#}
+{# ./navBarTop #}
 
 {% block main %}
 
