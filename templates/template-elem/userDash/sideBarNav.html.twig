@@ -1,31 +1,70 @@
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/user.css') }}">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+	<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 {% endblock %}
 
 {# ./sideBarNav #}
 {% block sideBarNav %}
 
+	<input
+	type="checkbox" id="check">
+
+	<!--mobile navigation bar start-->
+	<div class="mobile_nav">
+		<div class="nav_bar">
+			<img src="1.png" class="mobile_profile_image" alt="">
+			<i class="fa fa-bars text-dark nav_btn"></i>
+		</div>
+		<div class="mobile_nav_items">
+			<a href="#">
+				<i class="fas fa-desktop"></i>
+				<span>Dashboard</span>
+			</a>
+			<a href="#">
+				<i class="fas fa-cogs"></i>
+				<span>Components</span>
+			</a>
+			<a href="#">
+				<i class="fas fa-table"></i>
+				<span>Tables</span>
+			</a>
+			<a href="#">
+				<i class="fas fa-th"></i>
+				<span>Forms</span>
+			</a>
+			<a href="#">
+				<i class="fas fa-info-circle"></i>
+				<span>About</span>
+			</a>
+			<a href="#">
+				<i class="fas fa-sliders-h"></i>
+				<span>Settings</span>
+			</a>
+		</div>
+	</div>
+	<!--mobile navigation bar end-->
+
 	<nav
-		class="sidebar collaps bg-black rounded">
+		class="sidebar collaps bg-blueLight rounded">
 
 		{# profil #}
-		<center>
+		<center
+			class="profile_info">
 			{# profil picture #}
-			<img id="profile_image" src="https://avatars0.githubusercontent.com/u/67335568?s=400&u=ac5f6481217fb26a07edabe5856986caafbd5e19&v=4" alt=""/>
+			<img class="profile_img" src="https://avatars0.githubusercontent.com/u/67335568?s=400&u=ac5f6481217fb26a07edabe5856986caafbd5e19&v=4" alt=""/>
 			{# ./profil picture #}
 
 			{# profil First-LastName #}
-				<h3 class="text-white"> {{ app.user.lastName}}<br/>
+				<h5 class="text-warning mb-4"> {{ app.user.lastName}}<br/>
 				{{app.user.firstName }}
-			</h3><br/>
+			</h5><br/>
 			{# ./profil First-LastName #}
 
 			{# profil Role #}
-				<h6 class="text-success"> {% if is_granted("ROLE_ADMIN") is same as TRUE %}
-					Compte : Administrateur
+				<h6 class="text-danger"> {% if is_granted("ROLE_ADMIN") is same as TRUE %}
+					Administrateur
 				{% else %}
-					Compte : Client
+					Particulier
 				{% endif %}
 			</h6>
 			{# ./profil Role #}
@@ -34,74 +73,67 @@
 
 		{# sideBarMenu #}
 		<ul
-			class="mt-5">
+			id="accordion" class="mt-5 p-0">
 
 			{# my space #}
-			<a href="{{ path ('particulier_mon-espace') }}"><i class="fas fa-home text-warning mx-2"></i>Mon Espace</a>
+			<a class="text-white" href="{{ path ('particulier_mon-espace') }}">
+				<i class="fas fa-home text-warning mx-2"></i>Mon Espace</a>
 			{# ./my space #}
 
 			{# my account #}
-			<li class="my-4">
-				<a data-toggle="collapse" href="">
-					<i class="fas fa-money-check-alt text-warning mx-2"></i>Mes Comptes</a>
-				<ul>
-					{% for account in app.user.accounts %}
-						<li>
-							<a href="{{ path ('particulier_mon-compte', {id:account.id}) }}">{{account.AccountType.name}}</a>
-						</li>
-					{% endfor %}
+			<li class="" id="account">
+				<a class="dropdown-item text-white" data-toggle="collapse" data-target="#mesComptes" aria-expanded="true" aria-controls="mesComptes">
+					<i class="fas fa-money-check-alt text-warning mx-2"></i>Mes Comptes<i class="fas fa-chevron-down mx-2"></i>
+				</a>
+				<ul class="collapse text-white ml-5 p-0" id="mesComptes" aria-labelledby="account" data-parent="#accordion">
+					<li class="p-0 m-0">
+						<a class="text-white" href="#">Compte Courant</a>
+					</li>
 					<li>
-						<a class="text-success font-weight-bold" href="{{ path ('particulier_ajouter-un-compte') }}">Ajouter un compte</a>
+						<a>Livret A</a>
+					</li>
+					<li>
+						<a>PEL</a>
+					</li>
+					<li>
+						<a class="text-success" href="{{ path ('particulier_ouvrir-un-compte') }}">Ouvrir un compte</a>
 					</li>
 				</ul>
 			</li>
 			{# ./my account #}
 
 			{# my insurance #}
-			<li class="my-4">
-				<a data-toggle="collapse" href=""><i class="fas fa-shield-alt text-warning mx-2"></i>Mes Assurances</a>
-				<ul>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
+			<li class="" id="insurance">
+				<a class="dropdown-item text-white" data-toggle="collapse" data-target="#myInsurance" aria-expanded="true" aria-controls="myInsurance">
+					<i class="fas fa-shield-alt text-warning mx-2"></i>Mes Assurances<i class="fas fa-chevron-down mx-2"></i>
+				</a>
+				<ul class="collapse text-white ml-5 p-0" id="myInsurance" aria-labelledby="insurance" data-parent="#accordion">
+					<li class="p-0 m-0">
+						<a>Assurance Immobilière</a>
+					</li>
+					<li class="p-0 m-0">
+						<a>Assurance Automobile</a>
+					</li>
+					<li class="p-0 m-0">
+						<a>Assurance Santé</a>
+					</li>
+					<li class="p-0 m-0">
+						<a>Assurance Viellesse</a>
+					</li>
 				</ul>
 			</li>
 			{# ./my insurance #}
-
-			{# my info #}
-			<li class="my-4">
-				<a data-toggle="collapse" href="">
-					<i class="fas fa-user text-warning mx-2"></i>Mes Informations</a>
-				<ul>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-				</ul>
-			</li>
-			{# ./my info #}
-
-			{# ./my contact #}
-			<li class="my-4">
-				<a data-toggle="collapse" href="">
-					<i class="fas fa-comment text-warning mx-2"></i>Mes Contacts</a>
-				<ul>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-				</ul>
-			</li>
-			{# ./my contact #}
-			<li>
-				<a class="btn btn-danger shadow" href="{{ path ('app_logout') }}">Deconnexion</a>
-			</li>
-		</ul>
-		{# ./sideBarMenu #}
+			<a class="btn btn-danger shadow" href="{{ path ('app_logout') }}">Deconnexion</a>
+		</li>
+	</ul>
+	{# ./sideBarMenu #}
+</nav>
 
 
-	</nav>
-
-{% endblock %}
-{# ./sideBarNav #}
+<script type="text/javascript">
+	$(document).ready(function () {
+$('.nav_btn').click(function () {
+$('.mobile_nav_items').toggleClass('active');
+});
+});
+</script>{% endblock %}{# ./sideBarNav #}

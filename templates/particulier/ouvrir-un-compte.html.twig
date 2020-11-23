@@ -34,24 +34,26 @@
 		<div
 			class="content">
 
-			{# navMiddle #}
-			{% include "template-elem/userDash/navMiddle.html.twig" %}
-			{# ./navMiddle #}
-
 			{# addAccount Form #}
-				<div class="container"> <div class="row">
-					<div class="col-sm col-lg-6 text-white mt-5">
-						<h1>Ajout d'un nouveau compte</h1>
-						{{form(form)}}
+			<div class="container">
+				<div class="row">
+					<div class="container-fluid text-dark text-center  p-0">
+						<div class="col-2 card mt-5">
+							<h5 class="p-2">Ouvrir un compte</h5>
 						</div>
 					</div>
-				</div>
-				{# addAccount Form #}
+					<div class="col-sm col-lg-6 card text-dark my-5">
+						<div class="m-5">
+							{{form(form)}}
+							</div>
+						</div>
+					</div>
+					{# addAccount Form #}
 
-			</main>
-		{% endblock %}
-		{# ./Main content #}
+				</main>
+			{% endblock %}
+			{# ./Main content #}
 
-		{# footer !! dont delete !! #}
-		{% block footer %}{% endblock %}
-		{# ./footer !! dont delete !! #}
+			{# footer !! dont delete !! #}
+			{% block footer %}{% endblock %}
+			{# ./footer !! dont delete !! #}

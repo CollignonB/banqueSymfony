@@ -1,84 +1,141 @@
 {% extends 'base.html.twig' %}
 
+{# Title Page #}
 {% block title %}
 	Mon Espace
 {% endblock %}
+{# ./Title Page #}
 
 {% block stylesheets %}{% endblock %}
 
 {# navBarTop #}
 {% block nav %}
-	{% include "template-elem/userDash/navTopDash.html.twig" %}
+	{% include "template-elem/userDash/navTop.html.twig" %}
 {% endblock %}
 {# ./navBarTop #}
 
+{# header !! dont delete !! #}
 {% block header %}{% endblock %}
+{# ./header !! dont delete !! #}
 
+{# main Content #}
 {% block main %}
 
-	<main
-		class="wrapper">
-
+	<main>
 		{# sideNavBar #}
 		{% include "template-elem/userDash/sideBarNav.html.twig" %}
 		{# ./sideNavBar #}
 
-		{# main Content #}
-			<div
-			class="content"> {# navMiddle #}
-			{% include "template-elem/userDash/navMiddle.html.twig" %}
-			{# ./navMiddle #}
+		{# page name #}
+			<div class="content"> <div class="row">
+				<div class="container-fluid text-dark text-center mx-5 p-0">
+					<div class="col-2 card mx-4 mt-5">
+						<h5 class="p-2">Mon Espace</h5>
+					</div>
+				</div>
+			</div>
+			{# ./page name #}
 
 			<div class="row">
-				<div class="col-lg d-flex flex-wrap justify-content-center my-5">
-					{% for account in app.user.accounts %}
-						<div class="card text-white shadow  mb-5 bg-white rounded" style="heigth: 100%;">
-							<div class="card-header bg-ligthBlack text-center shadow">
-								<h4 class="text-white">{{account.AccountType.name}}</h4>
-							</div>
-							<div class="card bg-darkGrey mx-auto mt-3 mb-3">
-								<h5 class="card-title font-weight-bold m-1 p-2">Solde :
-									{{account.amount}}
-									<span class="text-warning">€</span>
+				{% for account in app.user.accounts  %}
+					<div class="container-fluid d-flex flex-wrap justify-content-center mx-2 my-5">
+						<div
+							class="col-lg-7 card text-white shadow mb-5 rounded p-0">
+
+							{# account title #}
+							<div class="card-header text-center shadow">
+								<h5 class="text-dark">
+									{{account.AccountType.name}}
+									- numéro : {{account.id}}
 								</h5>
 							</div>
-							<div class="card-body">
-								<div class="d-flex flex-column">
-									{% for transfert in account.transferts|slice(0, 1) %}
+							{# ./account title #}
+
+							{# account amount #}
+							<div class="card bg-lightGrey mx-auto mt-3 mb-3 mt-5">
+								<h5 class="card-title text-dark font-weight-bold m-1 p-2">
+									Solde :
+									{{account.amount}}<span class="text-warning">€</span>
+								</h5>
+							</div>
+							{# ./account amount #}
+
+							{# Transfert operation #}
+							{% for transfert in account.transferts|slice(- 1) %}
+								<div class="card-body text-dark">
+									<div class="d-flex flex-column align-items-center">
 										<div class="d-flex align-items-center">
-											<div class="mx-3 mt-2">
-												<p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<div class="mt-2">
+												<p class="card-title">Nom du débit ou du crédit.</p>
 											</div>
-											<div class="mx-3">
-												<p class="card-title m-0">
+											<div class="">
+												<p class="card-title m-0 p-0">
 													<span class="bg-white">|</span>
+													<span class="font-weight-bold">
+														{% if (transfert.type == 0 )%}
+															<span class="text-danger font-weight-bold">-</span>
+														{% else %}
+															<span class="text-success font-weight-bold">+</span>
+														{% endif %}
+													</span>
 													<span class="font-weight-bold">{{transfert.amount}}</span>
 													<span class="text-warning">€</span>
 												</p>
 											</div>
 										</div>
-										<hr class="bg-white m-3">
-									{% endfor %}
-
+									</div>
 								</div>
+							{% endfor %}
+							{# ./Transfert operaton #}
 
-							</div>
-							<div class="card-footer text-center">
+							<div
+								class="card-footer text-center">
+								{# show account #}
 								<a class="btn btn-info shadow" href="{{ path ('particulier_mon-compte', {id:account.id}) }}">Visualiser mon compte</a>
+								{# ./show account #}
 							</div>
 						</div>
-						<div class="col-4 card text-black shadow mx-2 mb-5 bg-white rounded" style="height: 10rem; width: 10rem">
-							<img src="https://cdn.icon-icons.com/icons2/1194/PNG/512/1490886330-30-diagram_82477.png" alt="" style="height: 10rem; width: 10rem">
+
+						{# stats icone account #}
+						<div
+							class="col-lg-4 text-black mb-5 mx-2 rounded">
+							{# <img src="" alt=""> #}
+							<div class="row d-flex flex-wrap">
+								<div class="col-4 card text-center p-0 mx-2" style="width: 40px; height: 100%">
+									<h6 class="card-header">Calendrier</h6>
+									<a href="">
+										<img class="my-4" src="https://www.graphicsfuel.com/wp-content/uploads/2012/02/calendar-icon-512x512.png" alt="" style="width: 80px; height: 80px">
+									</a>
+								</div>
+								<div class="col-4 card text-center p-0 mx-2" style="width: 40px; height: 100%">
+									<h6 class="card-header">Statistiques</h6>
+									<a href="">
+										<img class="my-4" src="https://www.psdgraphics.com/file/money-icon.jpg" alt="" style="width: 80px; height: 80px">
+									</a>
+								</div>
+								<div class="col-4 card text-center p-0 mx-2 mt-3" style="width: 40px; height: 100%">
+									<h6 class="card-header">Devise</h6>
+									<a href="">
+										<img class="my-4" src="https://www.psdgraphics.com/wp-content/uploads/2009/05/euro-symbol.jpg" alt="" style="width: 80px; height: 80px">
+									</a>
+								</div>
+								<div class="col-4 card text-center p-0 mx-2 mt-3" style="width: 40px; height: 100%">
+									<h6 class="card-header">Coffre</h6>
+									<a href="">
+										<img class="my-4" src="https://www.psdgraphics.com/file/gold-bars-png.png" alt="" style="width: 80px; height: 80px">
+									</a>
+								</div>
+							</div>
 						</div>
-					{% endfor %}
-				</div>
+						{# ./stats icone account #}
+					</div>
+				{% endfor %}
 			</div>
-
 		</div>
-		{# main Content #}
-
 	</main>
-
 {% endblock %}
+{# ./main content #}
 
+{# footer !! dont delete !! #}
 {% block footer %}{% endblock %}
+{# ./footer !! dont delete !! #}

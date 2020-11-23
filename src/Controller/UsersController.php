@@ -49,7 +49,7 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/ajouter-un-compte", name="ajouter-un-compte")
+     * @Route("/ouvrir-un-compte", name="ouvrir-un-compte")
      */
     public function addAccount(Request $request)
     {
@@ -69,7 +69,7 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('particulier_mon-espace');
         }
 
-        return $this->render('particulier/ajouter-un-compte.html.twig', [
+        return $this->render('particulier/ouvrir-un-compte.html.twig', [
             'form' => $form->createView(),
         ]);
     }
